@@ -120,16 +120,15 @@ Namespaces provide logical separation within a single cluster, allowing you to d
 5. What is ETCD?
 ETCD is a distributed key-value database that stores the entire cluster state and configuration data. It's the source of truth for the Kubernetes cluster.
 6. How do you expose a Pod to external traffic?
-Use a Service object with type LoadBalancer to expose the Pod and get an external IP address that users can access.
+“We expose a Pod externally by creating a Service of type NodePort or LoadBalancer. In production, we typically use Ingress with a LoadBalancer for better traffic management.”
+kubectl expose pod nginx-pod --type=LoadBalancer --port=80
+(Use a Service object with type LoadBalancer to expose the Pod and get an external IP address that users can access.)
 7. What is kubectl?
 kubectl is the command-line tool used to interact with Kubernetes clusters, allowing you to deploy applications, inspect resources, and manage cluster operations.
 8. Name three major cloud providers offering managed Kubernetes.
 AWS (EKS - Elastic Kubernetes Service)
 Azure (AKS - Azure Kubernetes Service)
 Google Cloud (GKE - Google Kubernetes Engine)
-
-
-
 
 Additional Kubernetes Interview Questions & Answers
 9. What is the role of Kubelet?
@@ -149,7 +148,6 @@ kubectl apply: Creates or updates resources, can be used repeatedly (declarative
 Use the command: kubectl get pods -o wide
 16. What file format is used for Kubernetes manifests?
 YAML (Yet Another Markup Language) files with key-value pairs including apiVersion, kind, metadata, and spec.
-
 
 More Kubernetes Interview Questions & Answers
 17. What is a Container Runtime?
@@ -275,4 +273,5 @@ Difference between kubectl create (first time) vs kubectl apply (updates)
 Manifest file is another name for YAML configuration
 Communication in Kubernetes happens via service names, not IPs
 Service types: ClusterIP, NodePort, LoadBalance
+
 ==========================
