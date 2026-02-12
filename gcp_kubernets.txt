@@ -1,0 +1,278 @@
+12/02/2026
+kubernets:
+gcloud beta container --project "sturdy-yen-483317-v6" clusters create "new" --region "asia-east1" --no-enable-basic-auth --cluster-version "1.34.3-gke.1051003" --release-channel "regular" --machine-type "e2-medium" --image-type "COS_CONTAINERD" --disk-type "pd-standard" --disk-size "50" --metadata disable-legacy-endpoints=true --service-account "default" --max-pods-per-node "110" --num-nodes "1" --logging=SYSTEM,WORKLOAD --monitoring=SYSTEM,STORAGE,POD,DEPLOYMENT,STATEFULSET,DAEMONSET,HPA,JOBSET,CADVISOR,KUBELET,DCGM --enable-ip-alias --network "projects/sturdy-yen-483317-v6/global/networks/default" --subnetwork "projects/sturdy-yen-483317-v6/regions/asia-east1/subnetworks/default" --no-enable-intra-node-visibility --default-max-pods-per-node "110" --enable-ip-access --security-posture=standard --workload-vulnerability-scanning=disabled --no-enable-google-cloud-access --addons HorizontalPodAutoscaling,HttpLoadBalancing,NodeLocalDNS,GcePersistentDiskCsiDriver --enable-autoupgrade --enable-autorepair --max-surge-upgrade 1 --max-unavailable-upgrade 0 --binauthz-evaluation-mode=DISABLED --enable-managed-prometheus --enable-shielded-nodes --shielded-integrity-monitoring --no-shielded-secure-boot --node-locations "asia-east1-b","asia-east1-a","asia-east1-c"
+
+gcloud container clusters get-credentials new --region asia-east1 --project sturdy-yen-483317-v6
+
+kubectl cluster-info
+kubectl config get-contexts
+kubectl get ns (to check name space)
+kubectl create ns jio-dev (to create name space)
+
+vikas
+501  gcloud container clusters get-credentials jagdish --region asia-east1 --project march22paid
+  502  kubectl cluster-info
+  503  kubectl config get-contexts
+  504  kubectl get ns
+  505  kubectl create ns jio-dev
+  506  kubectl get ns
+  507  mkdir batch-42
+  508  cd batch-42
+  509  ls
+  510  vi nsqa.yaml
+  511  cat nsqa.yaml 
+  512  kubectl create  -f nsqa.yaml 
+  513  kubectl get ns
+  514  kubectl run nginx  --image=nginx:1.16
+  515  kubectl get pods
+  516  kubectl get po
+  517  kubectl get no
+  518  kubectl get nodes
+  519  kubectl get svc
+  520  kubectl run jenkins  --image=jenkins/jenkins:lts
+  521  kubectl get no
+  522  kubectl get po
+  523  kubectl get svc
+  524  kubectl get svc -w
+  525  kubectl get po
+  526  kubectl get no
+  527  kubectl get po -o wide
+  ==============================================
+  Atanu
+   gcloud container clusters get-credentials new --region asia-east1 --project sturdy-yen-483317-v6
+    2  kubectl cluster-info
+    3  kubectl config get-contexts
+    4  kubectl get ns
+    5  kubectl create ns jio-dev
+    6  kubectl get ns
+    7  mkdir demo
+    8  cd demo
+    9  ls
+   10  vi nsqa.yaml
+   11  cat nsqa.yaml
+   12  kubectl create -f nsqa.yaml (To create )
+   13  kubectl get ns
+   14  kubectl run --image=nginx:1.16
+   15  kubectl run nginx --image=nginx:1.16
+   16  kubectl get po
+   17  kubectl get svc
+   18  kubectl run jenkins  --image=jenkins/jenkins:lts
+   19  kubectl get po
+   20  kubectl get svc
+   21  kubectl get no
+   22  kubectl get po
+   23  kubectl get po -o wide(to check where )
+   24  history
+   ======================================================
+   *DATE: 12/02/2026 Thursday (Kubernetes)
+
+
+Today's Kubernetes Class Summary
+Key Topics Covered:
+Kubernetes Fundamentals:
+Kubernetes is an open-source container orchestration system for automating application deployment, scaling, and management
+Originally developed by Google, now maintained by CNCF
+Written 97.4% in Go language
+Available across cloud providers: AWS (EKS), Azure (AKS), Google Cloud (GKE)
+Architecture Components:
+Master Node: API Server, ETCD (key-value database storing cluster state), Scheduler (finds best node for workloads), Control Manager
+Worker Nodes: Kubelet (agent on every node), Container Runtime (Docker), Kube-proxy (handles networking)
+Communication flow: kubectl → API Server → ETCD → Scheduler → Control Manager
+Practical Implementation:
+Created a 3-node Kubernetes cluster in Google Cloud (Asia East region)
+Connected using kubectl and kubeconfig file
+Commands learned: kubectl cluster-info, kubectl config get-context, kubectl get nodes/pods/namespaces
+Namespaces:
+Logical separation within a single cluster for environment segregation (dev/QA/prod)
+Created namespaces using CLI (kubectl create namespace) and YAML manifest files
+YAML files use key-value pairs with API version, kind, and metadata
+Pods and Services:
+Created NGINX and Jenkins pods using kubectl run command
+Exposed applications using Services (Load Balancer type) to make them accessible via external IP
+Verified deployments through both CLI and Google Cloud UI
+Key Commands: kubectl get pods -o wide shows which node runs each pod
+Today's Kubernetes Class Summary
+
+Key Topics:
+Kubernetes Fundamentals: Open-source container orchestrator (from Google, now CNCF, written in Go) for automated deployment, scaling, and management. Available on AWS (EKS), Azure (AKS), and Google Cloud (GKE).
+Architecture:
+Master Node: API Server, ETCD (cluster state DB), Scheduler, Control Manager.
+Worker Nodes: Kubelet, Container Runtime (Docker), Kube-proxy.
+Communication: kubectl → API Server → ETCD → Scheduler → Control Manager.
+Practical: Created a 3-node cluster in Google Cloud (Asia East). Connected via kubectl and kubeconfig. Learned commands: kubectl cluster-info, kubectl config get-context, kubectl get nodes/pods/namespaces.
+Namespaces: Logical separation (dev/QA/prod). Created via CLI or YAML manifest files (using API version, kind, metadata).
+Pods & Services: Created NGINX/Jenkins pods (kubectl run). Exposed applications using Load Balancer Services (external IP). Verified via CLI/UI.
+Key Command: kubectl get pods -o wide (shows node per pod).
+
+
+
+
+Kubernetes Interview Questions & Answers
+1. What is Kubernetes and why is it used?
+Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It's used to manage containers at scale, ensure high availability, and simplify application deployment across different environments.
+2. Explain the difference between Master Node and Worker Node.
+Master Node: Controls the cluster, runs API Server, ETCD, Scheduler, and Control Manager. Makes decisions about the cluster.
+Worker Node: Runs the actual applications, contains Kubelet, Container Runtime, and Kube-proxy.
+3. What is a Pod in Kubernetes?
+A Pod is the smallest deployable unit in Kubernetes. It contains one or more containers that share storage, network, and specifications for how to run the containers.
+4. What is the purpose of Namespaces?
+Namespaces provide logical separation within a single cluster, allowing you to divide cluster resources between multiple users or environments (like dev, QA, prod) without needing separate physical clusters.
+5. What is ETCD?
+ETCD is a distributed key-value database that stores the entire cluster state and configuration data. It's the source of truth for the Kubernetes cluster.
+6. How do you expose a Pod to external traffic?
+Use a Service object with type LoadBalancer to expose the Pod and get an external IP address that users can access.
+7. What is kubectl?
+kubectl is the command-line tool used to interact with Kubernetes clusters, allowing you to deploy applications, inspect resources, and manage cluster operations.
+8. Name three major cloud providers offering managed Kubernetes.
+AWS (EKS - Elastic Kubernetes Service)
+Azure (AKS - Azure Kubernetes Service)
+Google Cloud (GKE - Google Kubernetes Engine)
+
+
+
+
+Additional Kubernetes Interview Questions & Answers
+9. What is the role of Kubelet?
+Kubelet is an agent that runs on every worker node. It ensures containers are running in pods and communicates with the Master Node to receive instructions and report node status.
+10. What is Kube-proxy?
+Kube-proxy is a network component that runs on each node and handles networking rules, enabling communication between pods and services within the cluster.
+11. What is the API Server?
+The API Server is the front-end of the Kubernetes control plane. It processes REST requests, validates them, and updates the corresponding objects in ETCD. All components communicate through the API Server.
+12. What is a Scheduler in Kubernetes?
+The Scheduler watches for newly created pods and assigns them to the most suitable worker node based on resource requirements, constraints, and availability.
+13. What is the Control Manager?
+The Control Manager runs controller processes that regulate the cluster state, ensuring the desired state matches the actual state (like maintaining the correct number of pod replicas).
+14. What is the difference between kubectl create and kubectl apply?
+kubectl create: Creates resources, fails if resource already exists
+kubectl apply: Creates or updates resources, can be used repeatedly (declarative approach)
+15. How do you check which node a pod is running on?
+Use the command: kubectl get pods -o wide
+16. What file format is used for Kubernetes manifests?
+YAML (Yet Another Markup Language) files with key-value pairs including apiVersion, kind, metadata, and spec.
+
+
+More Kubernetes Interview Questions & Answers
+17. What is a Container Runtime?
+Container Runtime is the software responsible for running containers on a node. Docker is the most common example, but Kubernetes also supports containerd and CRI-O.
+18. What are the main Kubernetes Service types?
+ClusterIP: Internal access only (default)
+NodePort: Exposes service on each node's IP at a static port
+LoadBalancer: Creates an external load balancer with a public IP
+ExternalName: Maps service to a DNS name
+19. What is the difference between a Pod and a Deployment?
+A Pod is a single instance of running containers. A Deployment manages multiple pod replicas, handles updates, rollbacks, and ensures the desired number of pods are always running.
+20. How do you view all namespaces in a cluster?
+Use the command: kubectl get namespaces
+21. What language is Kubernetes primarily written in?
+Go language (97.4%)
+22. Who originally developed Kubernetes?
+Google originally developed Kubernetes, and it's now maintained by the Cloud Native Computing Foundation (CNCF).
+23. What is kubeconfig?
+A configuration file that contains cluster connection details, authentication credentials, and context information needed for kubectl to communicate with the cluster.
+24. How do you create a namespace using CLI?
+kubectl create namespace <namespace-name>
+25. What command shows cluster information?
+kubectl cluster-info*
+===============================================================
+Based on the meeting context, here are key interview Q&A topics covered:
+
+1. What is Kubernetes?
+Kubernetes is an open-source container orchestration system for automating computer application deployment, scaling, and management of containerization technology.
+
+2. Difference between Docker and Kubernetes?
+Docker is primarily for image management and container creation. Kubernetes is for orchestrating/managing containers with automation features like auto-scaling, load balancing, self-healing, and automated rollbacks.
+
+3. What is a Pod?
+A pod is a single instance of a running process in an application. It contains at least one container and can contain multiple containers, volumes. It's the smallest deployable unit in Kubernetes.
+
+4. What is Namespace?
+Namespace is logical separation within a single cluster - segregation of the cluster into multiple parts. Used to divide cluster resources when you don't have budget for separate clusters (like dev, QA, prod environments).
+
+5. Components in Master Node?
+
+API Server: First request handler, connects with all components
+ETCD: Key-value database storing state of current configuration/cluster
+Scheduler: Finds best spot for workload, decides which node to create pod
+Controller Manager: Performs actual creation activities
+6. Components in Worker Node?
+
+Kubelet: Agent running on every node, passes information to master
+Kube-proxy: Helps workload reach internet
+Container Runtime: Docker/container engine managing container lifecycle
+Pods: Where applications run
+7. Difference between kubectl create vs apply?
+Create: Used first time as best practice
+Apply: Used for subsequent updates/changes
+
+8. What is kubeconfig?
+Kubernetes configuration file containing cluster connection credentials and context information.
+
+9. What is Service in Kubernetes?
+Service provides naming/mapping for pods. Since pod IPs can change, service ensures communication happens via names, not IPs.
+
+10. What is Manifest file?
+YAML files containing Kubernetes object definitions (another name for Kubernetes YAML code).
+=================================================
+Based on the meeting transcript, here are some scenario-based questions and answers that were discussed:
+
+Scenario 1: Connecting to Kubernetes Cluster
+Q: How do you connect to a Kubernetes cluster in your company?
+A: Using kubeconfig file. You can get credentials using the gcloud command or through tools like Rancher. The command is: gcloud container clusters get-credentials --project=
+
+Scenario 2: Multiple Environments with Limited Budget
+Q: How do you manage dev, staging, and production environments when you don't have budget for separate clusters?
+A: Use namespaces to divide a single cluster into multiple logical parts. This allows segregation of environments within one cluster, providing quota management for each namespace.
+
+Scenario 3: Pod Running on Specific Node
+Q: How do you find out which node a pod is running on?
+A: Use the command: kubectl get pods -o wide
+This shows detailed information including the node where each pod is running.
+
+Scenario 4: Exposing Application to Internet
+Q: How do you make your application accessible over the internet?
+A: Create a service with type LoadBalancer. This uses kube-proxy component to expose the application externally and provides a public IP address. You can expose using UI or command line with port mapping.
+
+Scenario 5: Node Failure Impact
+Q: What happens if the node running your application gets deleted?
+A: The application will be affected if everything is on a single node. This issue is addressed using replica sets and deployments (covered in next class) which ensure high availability by distributing pods across multiple nodes.
+==================================
+Based on today's session, here is a summary:
+
+Day 1 of Kubernetes Training - Key Topics Covered:
+
+Introduction to Kubernetes:
+
+Kubernetes is an open-source container orchestration system for automating application deployment, scaling, and management
+Originally developed by Google, now maintained by CNCF (Cloud Native Computing Foundation)
+Written 97.4% in Go language
+Available as EKS (AWS), AKS (Azure), and GKE (Google Cloud)
+Kubernetes Architecture:
+
+Cluster consists of Master Node and Worker Nodes
+Master Node components: API Server, ETCD, Scheduler, Control Manager
+Worker Node components: Kubelet (agent), Kube-proxy, Container Runtime (Docker), Pods
+kubectl is the CLI tool to connect and interact with Kubernetes cluster
+Key Concepts Explained:
+
+Pod: Single instance of running process containing at least one container
+Namespace: Logical separation within a cluster for segregating environments (dev, QA, prod)
+ETCD: Database storing cluster state in key-value format
+Scheduler: Finds best node for workload placement
+Control Manager: Executes pod creation
+Kube-proxy: Enables pod communication to internet
+Service: Provides naming/mapping for pods (communication happens by name, not IP)
+Practical Session:
+
+Created Kubernetes cluster in Google Cloud (3-node cluster)
+Connected to cluster using kubeconfig file
+Created namespaces using CLI and YAML (manifest file) approaches
+Deployed NGINX and Jenkins pods
+Exposed applications using Load Balancer service
+Learned commands: kubectl get ns, kubectl get pods, kubectl create, kubectl apply, kubectl expose
+Key Interview Points:
+
+Difference between kubectl create (first time) vs kubectl apply (updates)
+Manifest file is another name for YAML configuration
+Communication in Kubernetes happens via service names, not IPs
+Service types: ClusterIP, NodePort, LoadBalance
+==========================
