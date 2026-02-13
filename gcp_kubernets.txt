@@ -397,4 +397,34 @@ Maximum containers per pod: While not explicitly limited, best practice is maxim
 
 The instructor emphasized these are important interview questions that students should remember.
 =======================================================
+Based on the meeting transcript, here are the key questions and answers from today's Kubernetes session:
+
+Q: What are the main ways to create a namespace in Kubernetes?
+A: Two ways - CLI (command line) approach using kubectl commands, and declarative approach using YAML files.
+
+Q: How many pods can be put in one node?
+A: 110 pods per node by default in Kubernetes.
+
+Q: What is the difference between vertical and horizontal scaling?
+A: Vertical scaling means increasing the same machine/pod (same entity gets increased). Horizontal scaling means adding more instances (like adding more workers).
+
+Q: What happens if you delete a pod that's part of a deployment?
+A: A new pod will automatically be created because the deployment maintains the desired state (e.g., if you specified 3 replicas, it will always maintain 3 pods).
+
+Q: What is the purpose of Fleet Registration?
+A: It allows connecting individual clusters into a group of clusters or making clusters shared across projects.
+
+Q: Which operating system is used in Kubernetes nodes?
+A: COS (Container Optimized Operating System) - not Ubuntu or regular Linux.
+
+Q: Which machine series is commonly used for day-to-day compute in Google Cloud?
+A: E-series (E2) is used for day-to-day operations. For high performance, C-series is used.
+
+Q: What is the difference between deployment and pod?
+A: Pod is an independent entity with no automation. Deployment manages identical pods, maintains state, provides auto-healing, and recreates pods if they go down.
+
+Q: How to make a pod go to a specific namespace?
+A: Use the command with --namespace flag, for example: kubectl run nginx1 --image=nginx --namespace=j
+===========================================================================================
+
 
