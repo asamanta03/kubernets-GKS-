@@ -366,8 +366,8 @@ Answer: Use the command: kubectl get deploy
 
 Scenario 5: Application restart without downtime
 Question: How to restart deployment without affecting users?
-Answer: Use rolling updates - it deletes pods one by one and creates new versions, so the application remains running. Users may experience brief impact for particular seconds only.
-kubectl rollout restart deployment <deployment-name>
+Answer: Use rollingupdates - it deletes pods one by one and creates new versions, so the application remains running. Users may experience brief impact for particular seconds only.
+kubectl rollout restart deployment <deployment-name> (to rollout)
 kubectl rollout status deployment <deployment-name> (to watch the rollout)
 kubectl get deployment nginx -o yaml (to check deployment statagy)
 look for:
@@ -387,17 +387,11 @@ Answer: This was given as homework to find the command for setting default names
 Based on the meeting transcript, several interview questions and answers were discussed:
 
 Number of pods per node: The answer is 110 pods per node in Kubernetes.
-
 Operating system for containers: The correct answer is COS (Container Optimized Operating System), not Ubuntu or Linux.
-
 Machine series in Google Cloud: For day-to-day compute operations, E-series (E2) is commonly used. For high performance, C-series is used.
-
 Production machine configuration: Maximum configuration discussed was 16 CPUs with 32GB RAM, or 8 CPUs with 16GB RAM for less heavy workloads.
-
 Vertical vs Horizontal scaling: Vertical scaling means increasing the same machine/pod capacity (CPU, memory). Horizontal scaling means adding more instances (like when your wife also works - that's horizontal scaling).
-
 Basic YAML structure: Every Kubernetes YAML file starts with:
-
 API version (V1 for pods)
 Kind (type of object like Pod, Deployment)
 Metadata (name)
@@ -412,7 +406,13 @@ Based on the meeting transcript, here are the key questions and answers from tod
 
 Q: What are the main ways to create a namespace in Kubernetes?
 A: Two ways - CLI (command line) approach using kubectl commands, and declarative approach using YAML files.
-
+kubectl create ns <namespace_name>
+namespace.yaml
+apiVersion: v1
+kind: namespace
+metadata:
+name: atanu
+kubectl apply -f namespace.yaml
 Q: How many pods can be put in one node?
 A: 110 pods per node by default in Kubernetes.
 
@@ -435,8 +435,9 @@ Q: What is the difference between deployment and pod?
 A: Pod is an independent entity with no automation. Deployment manages identical pods, maintains state, provides auto-healing, and recreates pods if they go down.
 
 Q: How to make a pod go to a specific namespace?
-A: Use the command with --namespace flag, for example: kubectl run nginx1 --image=nginx --namespace=j
+A: Use the command with --namespace flag, for example: kubectl run nginx1 --image=nginx --namespace=<namespace_name>
 ===========================================================================================
+
 
 
 
