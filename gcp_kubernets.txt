@@ -298,24 +298,16 @@ each node 512GB in real time.
   515  kubectl delete po nginxdeploy-657765b7c9-4hjxd
   516  kubectl get po
 ==============================================================
-Enter pod	kubectl exec -it <pod> -- /bin/bash
-From deployment	kubectl exec -it deployment/<name> -- /bin/bash
-Multiple containers	add -c <container>
-Create nginx deployment	kubectl create deployment nginx-deployment --image=nginx
-Expose service	kubectl expose deployment nginx-deployment --port=80
-View pods	kubectl get pods
-Enter pod	kubectl exec -it <pod> -- /bin/bash
+Enter pod:	kubectl exec -it <pod> -- /bin/bash
+enter From deployment to pod:	kubectl exec -it deployment/<name> -- /bin/bash
+Multiple containers:	add -c <container>
+Create nginx deployment:	kubectl create deployment nginx-deployment --image=nginx
+Expose service:	kubectl expose deployment nginx-deployment --port=80
+View pods:	kubectl get pods
 ==============================================================================
 Based on today's session, here's a summary:
 
 Main Topics Covered:
-
-Interview Preparation Setup
-
-Reviewed camera and audio setup for interviews
-Discussed resume review process (5 resumes daily starting Monday)
-Google Kubernetes Engine (GKE) Cluster Creation
-
 Explored comprehensive cluster creation options in Google Cloud
 Covered cluster configuration including:
 Region and zone selection based on latency
@@ -325,18 +317,14 @@ Maximum 110 pods per node
 Disk encryption options
 Security settings and backup plans
 Cluster Features
-
 Maintenance windows (customizable timing, default 4 hours)
 Auto-scaling options (vertical pod scaling and node auto-provisioning)
 Monitoring and logging (Cloud Monitor for metrics, Logging for application logs)
 Fleet registration for cluster grouping
 OpenTelemetry for tracking user behavior and recommendations
 IAM and Access Management
-
-Demonstrated how to grant access to other users
-Showed editor access with time-based conditions
+Demonstrated how to grant access to other users, Showed editor access with time-based conditions
 Kubernetes Practical Work
-
 YAML file structure basics (API version, Kind, Metadata, Spec)
 Visual Studio Code setup with Kubernetes extensions
 Created namespaces and pods using kubectl commands
@@ -346,20 +334,21 @@ Deployments manage replica sets (created deployment with 3 replicas)
 Auto-healing feature demonstrated (deleted pod automatically recreated)
 Stateful vs Stateless applications (identical pods use Deployment, non-identical use StatefulSet)
 Homework Assigned:
-
-Find command to set default namespace permanently
+Find command to set default namespace permanently:
+kubectl config set-context --current --namespace=<namespace-name>
+kubectl config get-contexts
+kubectl det po
 Compare top 10 AWS services with Google Cloud equivalents
 Prepare for Monday's session on Netflix case study and e-commerce microservices project
 Upcoming Topics:
-
-Volumes, Jobs, Secrets, ConfigMaps
-Horizontal
+========================================================================
+Volumes, Jobs, Secrets, ConfigMaps, Horizontal
 ==========================================================================
 Based on the meeting transcript, several scenario-based questions and answers were discussed during the Kubernetes training session:
 
 Scenario 1: Pod goes to wrong namespace
 Question: How to ensure a pod goes to a specific namespace instead of default?
-Answer: Use the command with "--namespace" or "-n" flag: kubectl run nginx1 --image=nginx --namespace=j
+Answer: Use the command with "--namespace" or "-n" flag: kubectl run nginx1 --image=nginx --namespace=<namespace-name>
 
 Scenario 2: Running container needs modification
 Question: How to add replicas to a running container/pod?
@@ -434,6 +423,7 @@ A: Pod is an independent entity with no automation. Deployment manages identical
 Q: How to make a pod go to a specific namespace?
 A: Use the command with --namespace flag, for example: kubectl run nginx1 --image=nginx --namespace=j
 ===========================================================================================
+
 
 
 
