@@ -297,9 +297,14 @@ each node 512GB in real time.
   514  kubectl get po
   515  kubectl delete po nginxdeploy-657765b7c9-4hjxd
   516  kubectl get po
+==============================================================
 Enter pod	kubectl exec -it <pod> -- /bin/bash
 From deployment	kubectl exec -it deployment/<name> -- /bin/bash
 Multiple containers	add -c <container>
+Create nginx deployment	kubectl create deployment nginx-deployment --image=nginx
+Expose service	kubectl expose deployment nginx-deployment --port=80
+View pods	kubectl get pods
+Enter pod	kubectl exec -it <pod> -- /bin/bash
 ==============================================================================
 Based on today's session, here's a summary:
 
@@ -429,6 +434,7 @@ A: Pod is an independent entity with no automation. Deployment manages identical
 Q: How to make a pod go to a specific namespace?
 A: Use the command with --namespace flag, for example: kubectl run nginx1 --image=nginx --namespace=j
 ===========================================================================================
+
 
 
 
