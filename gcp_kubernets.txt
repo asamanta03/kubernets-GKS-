@@ -274,4 +274,127 @@ Manifest file is another name for YAML configuration
 Communication in Kubernetes happens via service names, not IPs
 Service types: ClusterIP, NodePort, LoadBalance
 
-==========================
+==================================================================
+
+========================================================================================
+Day 2 of kubernetes 13/2/2026
+each node 512GB in real time.
+
+================================================================
+501  gcloud container clusters get-credentials mykubernetescluster --region us-central1 --project modular-decoder-482002-p3
+  502  kubectl get no 
+  503  kubectl get po
+  504  kubectl get ns
+  505  kubectl create ns jay
+  506  kubectl run nginx  --image=nginx:1.16
+  507  kubectl get po
+  508  kubectl get svc
+  509  kubectl get po
+  510  kubectl get po -o wide
+  511  kubectl create deployment nginxdeploy --image=nginx
+  512  kubectl get po
+  513  kubectl get deploy
+  514  kubectl get po
+  515  kubectl delete po nginxdeploy-657765b7c9-4hjxd
+  516  kubectl get po
+==============================================================================
+Based on today's session, here's a summary:
+
+Main Topics Covered:
+
+Interview Preparation Setup
+
+Reviewed camera and audio setup for interviews
+Discussed resume review process (5 resumes daily starting Monday)
+Google Kubernetes Engine (GKE) Cluster Creation
+
+Explored comprehensive cluster creation options in Google Cloud
+Covered cluster configuration including:
+Region and zone selection based on latency
+Node pools and sizing (E2 series for day-to-day operations)
+Production recommendations: 16 CPU, 32GB RAM or 8 CPU, 16GB RAM
+Maximum 110 pods per node
+Disk encryption options
+Security settings and backup plans
+Cluster Features
+
+Maintenance windows (customizable timing, default 4 hours)
+Auto-scaling options (vertical pod scaling and node auto-provisioning)
+Monitoring and logging (Cloud Monitor for metrics, Logging for application logs)
+Fleet registration for cluster grouping
+OpenTelemetry for tracking user behavior and recommendations
+IAM and Access Management
+
+Demonstrated how to grant access to other users
+Showed editor access with time-based conditions
+Kubernetes Practical Work
+
+YAML file structure basics (API version, Kind, Metadata, Spec)
+Visual Studio Code setup with Kubernetes extensions
+Created namespaces and pods using kubectl commands
+Deployments vs Pods:
+Pods are single entities without automation
+Deployments manage replica sets (created deployment with 3 replicas)
+Auto-healing feature demonstrated (deleted pod automatically recreated)
+Stateful vs Stateless applications (identical pods use Deployment, non-identical use StatefulSet)
+Homework Assigned:
+
+Find command to set default namespace permanently
+Compare top 10 AWS services with Google Cloud equivalents
+Prepare for Monday's session on Netflix case study and e-commerce microservices project
+Upcoming Topics:
+
+Volumes, Jobs, Secrets, ConfigMaps
+Horizontal
+==========================================================================
+Based on the meeting transcript, several scenario-based questions and answers were discussed during the Kubernetes training session:
+
+Scenario 1: Pod goes to wrong namespace
+Question: How to ensure a pod goes to a specific namespace instead of default?
+Answer: Use the command with "--namespace" or "-n" flag: kubectl run nginx1 --image=nginx --namespace=j
+
+Scenario 2: Running container needs modification
+Question: How to add replicas to a running container/pod?
+Answer: You cannot directly add replicas to a pod. Pods are single entity units without automation. You need to create a deployment instead, which manages replicas automatically.
+
+Scenario 3: Pod deletion and auto-healing
+Question: What happens when you delete a pod that's part of a deployment?
+Answer: The scheduler continuously monitors the desired state. If you configured 3 replicas and delete one pod, a new pod will automatically be created within 5-30 seconds to maintain the desired state of 3 pods.
+
+Scenario 4: Viewing deployments
+Question: How to see deployments?
+Answer: Use the command: kubectl get deploy
+
+Scenario 5: Application restart without downtime
+Question: How to restart deployment without affecting users?
+Answer: Use rolling updates - it deletes pods one by one and creates new versions, so the application remains running. Users may experience brief impact for particular seconds only.
+
+Scenario 6: Setting default namespace
+Question: How to set a namespace as default to avoid specifying it every time?
+Answer: This was given as homework to find the command for setting default namespace in the config file.
+====================================================
+Based on the meeting transcript, several interview questions and answers were discussed:
+
+Number of pods per node: The answer is 110 pods per node in Kubernetes.
+
+Operating system for containers: The correct answer is COS (Container Optimized Operating System), not Ubuntu or Linux.
+
+Machine series in Google Cloud: For day-to-day compute operations, E-series (E2) is commonly used. For high performance, C-series is used.
+
+Production machine configuration: Maximum configuration discussed was 16 CPUs with 32GB RAM, or 8 CPUs with 16GB RAM for less heavy workloads.
+
+Vertical vs Horizontal scaling: Vertical scaling means increasing the same machine/pod capacity (CPU, memory). Horizontal scaling means adding more instances (like when your wife also works - that's horizontal scaling).
+
+Basic YAML structure: Every Kubernetes YAML file starts with:
+
+API version (V1 for pods)
+Kind (type of object like Pod, Deployment)
+Metadata (name)
+Spec (specifications for CPU, memory, containers, etc.)
+Deployment vs Pod: Deployment creates identical pods and maintains their state. If one pod goes down, it automatically recreates a new one within 5-30 seconds. Pods are independent units without this automation.
+
+Maximum containers per pod: While not explicitly limited, best practice is maximum 5 containers per pod, typically 2-3.
+
+The instructor emphasized these are important interview questions that students should remember.
+=======================================================
+
