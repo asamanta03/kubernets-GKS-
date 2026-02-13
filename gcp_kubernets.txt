@@ -349,6 +349,8 @@ Based on the meeting transcript, several scenario-based questions and answers we
 Scenario 1: Pod goes to wrong namespace
 Question: How to ensure a pod goes to a specific namespace instead of default?
 Answer: Use the command with "--namespace" or "-n" flag: kubectl run nginx1 --image=nginx --namespace=<namespace-name>
+kubectl create deployment nginx --image=nginx:1.17 --namespace=<namespace_name> (to create deployment with spcific namespace)
+kubectl expose deployment nginx --port=80 --type=NodePort -namespace=my_namespace
 
 Scenario 2: Running container needs modification
 Question: How to add replicas to a running container/pod?
@@ -365,6 +367,18 @@ Answer: Use the command: kubectl get deploy
 Scenario 5: Application restart without downtime
 Question: How to restart deployment without affecting users?
 Answer: Use rolling updates - it deletes pods one by one and creates new versions, so the application remains running. Users may experience brief impact for particular seconds only.
+kubectl rollout restart deployment <deployment-name>
+kubectl rollout status deployment <deployment-name> (to watch the rollout)
+kubectl get deployment nginx -o yaml (to check deployment statagy)
+look for:
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxUnavailable: 0
+    maxSurge: 1
+maxUnavailable: 0 → Never bring down running pods before new ones are ready
+maxSurge: 1 → Create one extra pod during update
+
 
 Scenario 6: Setting default namespace
 Question: How to set a namespace as default to avoid specifying it every time?
@@ -423,6 +437,7 @@ A: Pod is an independent entity with no automation. Deployment manages identical
 Q: How to make a pod go to a specific namespace?
 A: Use the command with --namespace flag, for example: kubectl run nginx1 --image=nginx --namespace=j
 ===========================================================================================
+
 
 
 
