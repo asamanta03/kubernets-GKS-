@@ -361,11 +361,10 @@ kubectl get events -n my-namespace --sort-by=.metadata.creationTimestamp
 1️⃣ Resource Limits Misconfiguration
 resources:
   requests:
-    memory: "100Mi"
+    memory: "100Mi" (used only for scheduling)
   limits:
-    memory: "200Mi"
-Pod may:
-Get OOMKilled --->> Pod killed because memory exceeded
+    memory: "200Mi" (Java app starts with 256Mi heap)
+Pod may: Get OOMKilled --->> Pod killed because memory exceeded
 kubectl describe pod <pod>
 🌐 3️⃣ Networking Issues
 DNS resolution failing, Service not routing traffic, Ingress misconfigured
@@ -561,6 +560,7 @@ A: Pod is an independent entity with no automation. Deployment manages identical
 Q: How to make a pod go to a specific namespace?
 A: Use the command with --namespace flag, for example: kubectl run nginx1 --image=nginx --namespace=<namespace_name>
 ===========================================================================================
+
 
 
 
