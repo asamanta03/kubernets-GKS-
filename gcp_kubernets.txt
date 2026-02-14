@@ -274,128 +274,6 @@ Manifest file is another name for YAML configuration
 Communication in Kubernetes happens via service names, not IPs
 Service types: ClusterIP, NodePort, LoadBalance
 
-=======================================================================================
-Real time senario with POD:
-Step 1 — Check Pod Status
-kubectl get pods -n my-namespace
-show status of the pods
-Pending
-CrashLoopBackOff --> Container starts → crashes → restarts repeatedly. FIX: Check logs,Fix application config, Check env variables, Check port conflicts
-ImagePullBackOff -->> Reasons: Wrong image name, Private registry auth issue, No internet access. Fix:Verify image exists, Add imagePullSecrets.
-Error
-Terminating
-4. Pod Running But App Not Accessible: Service selector matches labels, Container listening on correct port, Firewall rules, Network policies
-Step 2 — Describe the Pod (Very Important)
-kubectl describe pod <pod-name> -n my-namespace
-This shows:
-Events
-Scheduling issues
-Image pull errors
-Volume mount failures
-Reasons:
-Resource issues
-Not enough CPU/Memory
-No nodes available
-PVC not bound
-Most problems are visible here.
-Fix issue
-Case 1: Not Enough CPU
-Option A — Reduce resource request
-kubectl get deploy nginx -n demo -o yaml
-Look fo resource block in yaml
-resources:
-  requests:
-    cpu: "1000m"
-reduce it to cpu: "100m" and apply.
-Option B — Add More Nodes
-add more node increase the replica count.
-or
-gcloud container clusters resize <cluster-name> --num-nodes=3
-Case 2: Not Enough Memory
-✅ Option A — Reduce resource request
-kubectl get deploy nginx -n demo -o yaml
-Look fo resource block in yaml
-resources:
-  requests:
-    MEMORY: "1000m"
-reduce it to MEMORY: "100m" and apply.
-Case 3: No Nodes Available
-kubectl get nodes -o wide -n demo
-status showing NotReady → node issue.
-Step 3 — Check Logs
-kubectl logs <pod-name> -n my-namespace
-kubectl logs <pod-name> -c <container-name> -n my-namespace (for multiple container)
-kubectl logs <pod-name> --previous -n my-namespace (for CrashLoop)
-Step 4 — Exec into Pod
-kubectl exec -it <pod-name> -n my-namespace -- /bin/sh
-kubectl exec -it <pod-name> -n my-namespace -- /bin/bash
-Check If Application Is Running
-ps aux
-ps aux | grep nginx
-Check If Config Is Correct
-nginx -t
-Check If Port Is Listening
-netstat -tulnp / ss -tulnp
-Test Locally Inside Container
-curl localhost:80
-If you see HTML → app is working inside container.
-If curl fails → application issue.
-curl localhost works
-But service not working externally → Service or networking issue. Then check logs
-Complete Debug Checklist (Memorize This)
-Inside container:
-ps aux
-nginx -t
-netstat -tulnp
-curl localhost:80
-Outside container:
-kubectl logs <pod>
-kubectl describe pod <pod>
-kubectl get svc
-kubectl get endpoints
-
-Step 5 — Check Resource Usage
-kubectl top pod -n my-namespace
-Step 6 — Check Events (Cluster-wide)
-kubectl get events -n my-namespace --sort-by=.metadata.creationTimestamp
-1️⃣ Resource Limits Misconfiguration
-resources:
-  requests:
-    memory: "100Mi" (used only for scheduling)
-  limits:
-    memory: "200Mi" (Java app starts with 256Mi heap)
-Pod may: Get OOMKilled --->> Pod killed because memory exceeded
-kubectl describe pod <pod>
-🌐 3️⃣ Networking Issues
-DNS resolution failing, Service not routing traffic, Ingress misconfigured
-inside the pod check:
-nslookup service-name
-curl service-name
-4️⃣ Volume / Storage Problems
-PVC stuck in Pending, Wrong storage class,Permission denied inside container
-🔐 5️⃣ Secrets & Config Issues
-Wrong:
-Database password, Missing environment variables
-kubectl describe pod <pod>
-🔄 6️⃣ Rolling Updates Fail
-Pods stuck during deployment:
-kubectl rollout status deployment nginx -n my-namespace
-📈 7️⃣ Scaling Problems
-Too many requests → pod CPU spikes → latency increases.
-kubectl autoscale deployment nginx --cpu-percent=50 --min=1 --max=5
-Golden Debug Command List (Memorize This)
-kubectl get pods -A
-kubectl describe pod <pod>
-kubectl logs <pod>
-kubectl get events --sort-by=.metadata.creationTimestamp
-kubectl top pod
-kubectl get svc
-kubectl get endpoints
-kubectl get nodes -o wide
-
-
-==================================================================
-
 ========================================================================================
 Day 2 of kubernetes 13/2/2026
 each node 512GB in real time.
@@ -560,6 +438,7 @@ A: Pod is an independent entity with no automation. Deployment manages identical
 Q: How to make a pod go to a specific namespace?
 A: Use the command with --namespace flag, for example: kubectl run nginx1 --image=nginx --namespace=<namespace_name>
 ===========================================================================================
+
 
 
 
