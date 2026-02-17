@@ -572,7 +572,133 @@ Cluster Management: Managing cluster creation, scaling services based on critica
 Documentation and Training: Providing documentation and training to L1/L2 teams for handling routine operations.
 
 The instructor emphasized presenting these as genuine real-world responsibilities tied to specific client projects in domains like banking, retail, telecom, or energy.
+=======================================================================================================
 =================================================================
+
+day 4 17/02/2026
+https://github.com/CloudDevOpsHub/Batch-38/blob/main/HPA%20practical
+https://github.com/CloudDevOpsHub/batch-42/blob/main/secret%20%2B%20Config%20map%20%2B%20Job
+
+ls
+kubuctl get secrats
+kubuctl get secret
+kubuctl get secret \
+kubuctl get secrets
+  350  kubectl create secret generic db-secret   --from-literal=DB_USER=admin   --from-literal=DB_PASSWORD=Admin@123
+  351  kubectl get secrets
+  352  kubectl describe secret db-secret
+  353  kubectl get configmaps
+  354  kubectl create configmap app-config   --from-literal=APP_ENV=production   --from-literal=APP_PORT=8080
+  355  kubectl get configmaps
+  356  kubectl get hpa
+  357  mkdir batch42
+  358  cd batch42
+  359  touch nginx-deployment.yaml
+  360  vi nginx-deployment.yaml
+  361  kubectl apply -f nginx-deployment.yaml
+  362  kubectl get pods
+  363  kubectl expose deployment nginx-deployment --type=LoadBalancer --port=80 --name=nginx-service
+  364  kubectl get svc
+  365  kubectl get apiservices | grep metrics
+  366  kubectl autoscale deployment nginx-deployment --cpu-percent=2 --min=2 --max=5
+  367  kubectl get hpa
+  368  gcloud auth login
+  369  kubectl run -it --rm --image=busybox load-generator -- /bin/sh
+
+===============================================================================
+Based on today's class, here is a summary:
+
+Main Topics Covered:
+
+Course Duration Discussion: The Kubernetes module has extended from the planned 6 days (3 Docker + 3 Kubernetes) to 9 days due to detailed hands-on practice, real-time scenarios, and clearing fundamentals thoroughly.
+
+Job Opportunities Shared:
+
+Fresher position at Deloitte (Hyderabad) - supporting cloud and DevOps activities
+Remote opportunity for Optimizer company (2+ years experience)
+TCS walk-in for Hyderabad
+Security-related opening at AFINA (5+ years, development and security focus)
+Kubernetes Concepts Reviewed:
+
+Services: Three types - Load Balancer (internet access), Cluster IP (internal cluster communication), Node Port (node-level access)
+Deployments: For managing identical pods with automatic recreation if pods go down
+StatefulSet: For managing different varieties of containers (explained using Netflix subscription example with different applications for mobile, TV, Android, iOS)
+Persistent Volume (PV) vs Persistent Volume Claim (PVC): PV is data/volume uploaded by admin, PVC is when a user claims/uses that volume (Netflix movie example used)
+Secrets and ConfigMap:
+
+Secrets: For sensitive data like passwords, usernames - can be edited using kubectl edit command
+ConfigMap: For non-sensitive configuration data like port numbers, environment settings
+Jobs: One-time running activities in Kubernetes, similar to cron jobs in Linux
+
+Horizontal Pod Autoscaling (HPA) - Main Practical:
+
+Created nginx deployment with resource limits
+Exposed service as load balancer on port 80
+Verified metric server installation
+Created HPA configuration to scale from 2 to 5 pods when CPU usage exceeds 2%
+Used BusyBox as load generator to simulate traffic
+Demonstrated automatic pod scaling when load increased
+Key Takeaways: Students were encouraged to practice hands-on, prepare for interviews,
+========================================================================
+Based on the meeting transcript, here are scenario-based interview questions and answers discussed:
+
+Scenario 1: Resource Quota Issues
+Q: Your application is working in dev environment but failing in production. What could be the issue?
+A: The production cluster size might be smaller than dev environment. We faced this when deployment worked in dev but not in production because production infrastructure was sized differently by the client. Solution is to use Terraform to create consistent infrastructure across environments to avoid such issues.
+
+Scenario 2: Netflix-like Application Architecture
+Q: How would you handle different user subscriptions (mobile, TV, Ultra HD) accessing the same content?
+A: Use Persistent Volumes (PV) for storing content (movies). When users access content, it becomes Persistent Volume Claim (PVC). For different subscription types with different configurations (mobile app, TV app, Android app), use StatefulSet to manage these unidentical applications. Deployment is used when all containers are identical.
+
+Scenario 3: Horizontal Pod Autoscaling
+Q: How do you handle sudden traffic increase like India-Pakistan cricket match on Hotstar?
+A: Implement Horizontal Pod Autoscaling (HPA). Set CPU threshold (e.g., 70% in production). When load increases beyond threshold, pods automatically scale from minimum (e.g., 2) to maximum (e.g., 5 or more). When load decreases, pods automatically scale down. Monitoring team, L1/L2 teams, and development teams coordinate to set appropriate thresholds.
+
+Scenario 4: Sensitive vs Non-Sensitive Data
+Q: How do you handle database credentials in Kubernetes?
+A: Use Secrets for sensitive data (username, password). Use ConfigMap for non-sensitive configuration (port numbers, environment names like "production", application settings). Secrets encrypt data, while ConfigMap keeps public configuration visible.
+
+Scenario 5: One-time Tasks
+Q: How do you run backup or maintenance tasks in Kubernetes?
+A: Use Jobs for one-time running activities, similar to cron jobs in Linux. Jobs execute specific tasks at particular times and complete.
+
+=================================================================================
+Based on the meeting transcript, here are the key interview questions and answers discussed:
+
+1. What is a Service in Kubernetes and its types?
+
+Service is used to expose pods externally with a name
+Three types: Load Balancer (for internet access with automatic distribution), Cluster IP (for communication within cluster only), and Node Port (for communication within a specific node only)
+Check services with: kubectl get svc
+2. What is the difference between Persistent Volume (PV) and Persistent Volume Claim (PVC)?
+
+PV is the volume/data uploaded by admin (like movies uploaded on Netflix)
+PVC is when someone is actually using/claiming that volume (like when a user starts watching a movie)
+When data is just available = PV, when someone accesses it = PVC
+3. What is Deployment vs StatefulSet?
+
+Deployment: Used when all containers/pods are identical/same
+StatefulSet: Used when containers are of different configurations (like Netflix having different apps for mobile, TV, Android with different subscriptions)
+4. What is Secret and ConfigMap?
+
+Secret: For sensitive information like passwords, usernames (encrypted)
+ConfigMap: For non-sensitive configuration like port numbers, environment settings
+Both can be edited using: kubectl edit secret/configmap <name>
+5. What is Job in Kubernetes?
+
+One-time running activities/processes
+Similar to cron jobs in Linux
+6. What is HPA (Horizontal Pod Autoscaling)?
+
+Automatically increases number of pods when traffic/load increases
+Command to check: kubectl get hpa
+Based on CPU percentage thresholds (e.g., if CPU > 70%, scale from 2 to 5 pods)
+7. What is Runbook vs Playbook?
+
+Runbook: Direct commands/steps for specific problems with exact solutions
+Playbook: More experimental, allows some flexibility in approach
+=====================================================================================
+
 
 
 
