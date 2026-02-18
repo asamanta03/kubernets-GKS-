@@ -699,6 +699,123 @@ Runbook: Direct commands/steps for specific problems with exact solutions
 Playbook: More experimental, allows some flexibility in approach
 =====================================================================================
 
+Day 5 18/02/2026 (kubernets, promethus, grafana )
+
+Based on the meeting transcript, here are the key interview questions and answers discussed:
+
+1. What is Helm?
+Answer: Helm is a package manager for Kubernetes, similar to APT in Ubuntu or YUM in CentOS. It helps install applications into Kubernetes environments using the command "helm install".
+
+2. Why is monitoring required?
+Answer:
+To check the current status of infrastructure and applications
+To see current and desired state of applications
+To check events happening in the system
+To track CPU, memory, and storage metrics
+To visualize data in graphical interface
+Logs can be deleted if pods go down, so centralized monitoring is needed
+Attackers can remove traces/logs, so centralized log storage is important
+3. How to troubleshoot Kubernetes issues?
+Answer: Use two main commands:
+
+kubectl logs - to check logs
+kubectl describe pod - to see detailed information and error messages
+4. What are common Kubernetes problems faced in real-time?
+Answer:
+
+Pods getting failed
+Image pull errors (ImagePullBackOff)
+Out of memory/CPU errors
+Failed scheduling
+Configuration issues (missing ConfigMap)
+Application crashes
+Storage issues (PVC failures)
+5. What is Prometheus and Grafana?
+Answer:
+
+Prometheus: Acts as storage backend, pulls data/metrics from sources and saves into database (time-series database in key-value pairs)
+Grafana: Acts as frontend UI, runs PromQL queries on Prometheus data and creates visualizations/graphs
+6. How does infrastructure monitoring work?
+Answer: Agent collects data from servers/clusters → Data gets segregated → Visualization graphs are created → Reporting happens
+=========================================
+Based on the meeting transcript, here are several scenario-based questions and answers discussed:
+
+Scenario 1: Pod Failure
+Q: What do you do when pods are getting failed in your namespace?
+A: Check the logs using kubectl logs <pod-name> or use kubectl describe pod <pod-name> to see detailed information about why the pod failed. Common reasons include:
+
+Image pull errors (wrong image name/version)
+Insufficient resources (CPU/memory)
+Configuration issues
+Scenario 2: Image Pull Back Error
+Q: What causes ImagePullBackOff error and how to resolve it?
+A: This occurs when:
+
+Image name or version is incorrect
+Image is private and requires authentication
+Solution: For private images, log in to the container registry using credentials, or use secrets with image pull credentials in the pod specification.
+Scenario 3: Application Crashes
+Q: Application is getting crashed repeatedly. How do you troubleshoot?
+A:
+
+Check logs first using kubectl logs
+Describe the pod to see events and error codes
+If it's a Java or application-level error, send it to developers
+Check resource limits if it's infrastructure related
+Scenario 4: Out of Memory Issues
+Q: How to simulate or handle out of memory scenarios?
+A:
+
+Don't enable HPA (Horizontal Pod Autoscaler)
+Put load on the application
+Check if CPU/memory limits are properly configured
+Increase resources if needed
+Scenario 5: Node Issues
+Q: How to check node-related problems?
+A: Use kubectl get nodes to check node status and kubectl describe node <node-name> for detailed information. For deeper monitoring, use monitoring systems like Prometheus/Grafana.
+
+Scenario 6: Failed Scheduling
+Q: What causes failed scheduling errors?
+A: This happens when Kubernetes cannot schedule a pod, possibly because:
+
+Resources already allocated
+Pod/container already exists
+Insufficient cluster resources
+=================================================================================
+Based on today's class, here is a summary:
+
+Main Topics Covered:
+
+Kubernetes Troubleshooting:
+
+Common issues like pod failures, image pull errors, out of memory errors
+How to troubleshoot using kubectl logs and kubectl describe commands
+Discussed real-time problems students face in their companies
+Solutions include checking logs, describing pods/nodes, and verifying resource limits
+Monitoring System Setup:
+
+Introduction to Prometheus and Grafana for Kubernetes monitoring
+Explained why monitoring is required: to check current status, track CPU/memory, see events, and maintain centralized logs
+Discussed the architecture: Node Exporter collects node information, Kube State Metrics collects cluster state, data stored in Prometheus (time-series database), and Grafana visualizes the data using PromQL queries
+Helm Package Manager:
+
+Helm is the package manager for Kubernetes (similar to APT for Ubuntu or YUM for CentOS)
+Used Helm to install Prometheus-Grafana stack
+Commands covered: helm repo add, helm repo update, helm install
+Practical Implementation:
+
+Created a separate namespace called "monitoring" to keep monitoring tools isolated
+Installed Prometheus-Grafana stack using Helm
+Exposed Grafana service using LoadBalancer on port 3000
+Login credentials: username is "admin", password is "prom-operator" (some students got encrypted passwords which also worked)
+Successfully accessed Grafana dashboard to view cluster monitoring
+Job Applications:
+
+Students were asked to apply for job openings and share their email IDs for HR tracking
+The class emphasized hands-on troubleshooting skills and setting up a complete monitoring solution for Kubernetes clusters.
+
+
+
 
 
 
