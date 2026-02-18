@@ -440,4 +440,10 @@ If you want next level, I can simulate:
 
 ☁️ GKE real production outage case
 
+
 Tell me which one you want to practice 👌
+
+==============================================
+The requirement was about creating separate modules in Terraform - like a VPC module, ECS module, and RDS module - and then calling all these modules from a main Terraform file (main.tf).
+The specific question was about how to handle AWS credentials (access key and secret key) when working with these modules, and whether a particular API could be used to manage these secret keys.
+Answer: credentials and passwords should be saved in Vault (likely HashiCorp Vault), AWS kms, which is a secure way to manage sensitive information like AWS access keys and secret keys.
