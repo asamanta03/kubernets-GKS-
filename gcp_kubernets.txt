@@ -8,6 +8,7 @@ kubectl cluster-info
 kubectl config get-contexts
 kubectl get ns (to check name space)
 kubectl create ns jio-dev (to create name space)
+kubens ---> to check namespace
 
 vikas
 501  gcloud container clusters get-credentials jagdish --region asia-east1 --project march22paid
@@ -37,7 +38,7 @@ vikas
   525  kubectl get po
   526  kubectl get no
   527  kubectl get po -o wide
-       kubens ---> to check namespace
+       
   ==============================================
   Atanu
    gcloud container clusters get-credentials new --region asia-east1 --project sturdy-yen-483317-v6
@@ -814,6 +815,7 @@ Job Applications:
 
 Students were asked to apply for job openings and share their email IDs for HR tracking
 The class emphasized hands-on troubleshooting skills and setting up a complete monitoring solution for Kubernetes clusters.
+
 
 
 
