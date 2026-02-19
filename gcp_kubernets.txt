@@ -912,6 +912,24 @@ Q5: What data source would you use in Grafana for infrastructure monitoring vs a
 A: For infrastructure monitoring (CPU, memory, disk metrics), we use Prometheus as the data source. For application-specific monitoring, we might use MySQL, Elasticsearch, or CloudWatch depending on where the application data is stored.
 Q6: Why are there multiple node exporters running?
 A: The number of node exporters equals the number of nodes in the cluster. Each node requires its own node exporter to collect metrics from that specific node.
+Based on today's session, here are key interview questions and answers from a DevOps/Kubernetes monitoring perspective:
+1. What is the role of DevOps in monitoring setup?
+Answer: DevOps engineers are responsible for providing and setting up the monitoring infrastructure. The actual monitoring and alert handling is done by L1/L2/NOC teams. If L1/L2 teams cannot resolve issues, they escalate to L3 or DevOps team.
+2. What is Helm and how does it work?
+Answer: Helm is a package manager for Kubernetes. It uses charts (packages) to install applications. The workflow is: helm repo add (download code) → helm repo update (fetch latest changes) → helm install (install the application). Helm has a client and Tiller server (daemon) that reads the code and creates resources via Kubernetes API.
+3. How do you customize Helm installations?
+Answer: Through the values.yaml file. You can change versions, enable/disable components by commenting them out, and customize configurations as per requirements.
+4. What is a data source in Grafana?
+Answer: Data source is where Grafana fetches data from - like Prometheus, Elasticsearch, MySQL, CloudWatch, etc. Prometheus is commonly used for Kubernetes monitoring.
+5. Why are there 3 node exporters in the setup?
+Answer: Because there are 3 nodes in the cluster. Each node requires one node exporter to collect node-level metrics. If there are 11 nodes, there will be 11 node exporters.
+6. What is the difference between monitoring types?
+Answer: Server monitoring (software installed), Infrastructure monitoring (CPU, memory, disk at node/cluster level), Application monitoring (application-specific metrics), Network monitoring (network performance).
+7. How do you import dashboards in Grafana?
+Answer: Two methods - using Dashboard ID (copy ID and import via Load button) or downloading JSON file and uploading/pasting it in Grafana import section.
+8. What is the Explore option in Grafana?
+Answer: It allows direct connection to the database (Prometheus) to search and query metrics. All available metrics can be explore
+
 
 
 
