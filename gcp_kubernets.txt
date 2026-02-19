@@ -815,6 +815,106 @@ Job Applications:
 
 Students were asked to apply for job openings and share their email IDs for HR tracking
 The class emphasized hands-on troubleshooting skills and setting up a complete monitoring solution for Kubernetes clusters.
+================================================================================================================
+Day 6:   19/2/2026
+
+Here is a summary from today's session:
+
+Main Topic: Kubernetes Day 11 - Monitoring Setup with Prometheus and Grafana
+
+Key Points Covered:
+
+Monitoring Importance: The session emphasized why monitoring is essential - to proactively solve issues, make informed decisions about resource allocation, and optimize costs based on CPU, memory, and disk usage metrics.
+
+Helm Package Manager:
+
+Helm is a package manager for Kubernetes
+It uses charts (packaged code) that can be downloaded from Helm Hub
+Commands covered: helm repo add, helm repo update, helm install
+The values.yml file can be customized to modify versions and configurations
+Setup Process:
+
+Created a GKE cluster with 3 nodes across different regions
+Created a separate "monitor" namespace for isolation and easier management
+Installed Prometheus and Grafana stack using Helm
+Components deployed: Alert Manager, Grafana, Kube State Metrics, Node Exporters (3 - one per node), and Prometheus
+Grafana Configuration:
+
+Accessed Grafana UI on port 3000 (runs on Node.js/React)
+Default password: prom-operator
+Changed themes, passwords, and preferences
+Explored dashboards and customization options
+Dashboard Management:
+
+Imported dashboards using ID numbers or JSON files from Grafana's dashboard library
+Customized visualizations (graphs, gauges, tables, colors)
+Data source configuration - Prometheus as primary data source
+Explored metrics using the Explore option
+Alerting Setup:
+
+Configured alert rules and contact points
+Integration with Microsoft Teams, email, and DL (distribution lists)
+Silence/suppression feature for maintenance windows to prevent unnecessary alerts
+User Management:
+
+Created users and teams with different permission levels (view, edit, admin)
+Different teams: L1, L2, L3, DevOps with appropriate access levels
+Key Takeaways:
+
+DevOs
+
+=====================================================================================
+Based on today's session, here are the key Q&A points:
+1. What is Helm and how does it work?
+Helm is a package manager for Kubernetes
+It uses charts (code packages) to install applications
+Helm has a client and Tiller server (daemon) that reads code and creates resources via Kubernetes API
+Commands: helm repo add (download), helm repo update (update code), helm install (install application)
+2. What is the role of DevOps in monitoring setup?
+DevOps engineers provide and set up the infrastructure (Prometheus, Grafana)
+L1/L2/NOC teams handle day-to-day monitoring and alerts
+DevOps escalates to L3 when L1 cannot resolve issues
+3. Why is monitoring required?
+To proactively solve issues before they become critical
+To make decisions based on metrics (CPU, memory, disk usage)
+To optimize costs by identifying unused resources
+To ensure applications remain up and running continuously
+4. What can be customized in Grafana?
+Dashboards can be imported using ID or JSON files
+Visualizations (graphs, gauges, tables, colors, themes)
+Values.yaml file in Helm charts to customize what gets installed
+Time zones, display preferences, alert thresholds
+5. What is a data source in Grafana?
+The backend database where Grafana fetches data from
+Examples: Prometheus (for metrics), Elasticsearch, MySQL, CloudWatch
+Prometheus is used as the data source for Kubernetes monitoring
+6. How do alerts work?
+Alerts can be configured based on rules and thresholds
+Contact points can be set up (email, Microsoft Teams, etc.)
+Alerts keep firing until issues are resolved
+Silence/suppression can be enabled during maintenance windows
+7. What metrics are monitored?
+Cluster-level: CPU, memory, disk usage
+Node-level: Node exporter runs on each node (3 nodes = 3 node exporters)
+Application-level: Specific application metrics
+Network: Network transmission rates
+=====================================================================
+Based on the meeting transcript, here are some scenario-based interview questions and answers discussed:
+Q1: What is your role in setting up monitoring infrastructure?
+A: As a DevOps engineer, our main job role is to provide the infrastructure. We set up Prometheus and Grafana monitoring stack, configure it, and hand it over to the L1/L2/NOC monitoring team who will handle day-to-day alerts and monitoring activities.
+Q2: How do you customize Helm charts for your requirements?
+A: We use the values.yaml file in Helm charts to customize the installation. For example, if the default chart has version 1 but we need version 1.5, we modify the version in values.yaml. We can also comment out unnecessary components that we don't want to install.
+Q3: If Prometheus data is not coming for a particular node, how would you troubleshoot?
+A: First, check if the node exporter pod is running on that specific node. Since we have one node exporter per node (e.g., 3 nodes = 3 node exporters), if data is missing from one node, the corresponding node exporter pod might not be running properly.
+Q4: How do you handle alerts during maintenance windows?
+A: We use the silence/suppress feature in Grafana alerting. During maintenance or patching activities, we create a silence with a specific time duration so that alerts are not triggered and hundreds of unnecessary tickets are not created.
+Q5: What data source would you use in Grafana for infrastructure monitoring vs application monitoring?
+A: For infrastructure monitoring (CPU, memory, disk metrics), we use Prometheus as the data source. For application-specific monitoring, we might use MySQL, Elasticsearch, or CloudWatch depending on where the application data is stored.
+Q6: Why are there multiple node exporters running?
+A: The number of node exporters equals the number of nodes in the cluster. Each node requires its own node exporter to collect metrics from that specific node.
+
+
+
 
 
 
