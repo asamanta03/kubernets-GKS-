@@ -34,7 +34,7 @@ vikas
   521  kubectl get no
   522  kubectl get po
   523  kubectl get svc
-  524  kubectl get svc -w
+  524  kubectl get svc -w (watch services in real time.)
   525  kubectl get po
   526  kubectl get no
   527  kubectl get po -o wide
@@ -52,7 +52,7 @@ vikas
     9  ls
    10  vi nsqa.yaml
    11  cat nsqa.yaml
-   12  kubectl create -f nsqa.yaml (To create )
+   12  kubectl create -f nsqa.yaml (create resources from a YAML configuration file )
    13  kubectl get ns
    14  kubectl run --image=nginx:1.16
    15  kubectl run nginx --image=nginx:1.16
