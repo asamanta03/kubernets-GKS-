@@ -63,7 +63,7 @@ vikas
    20  kubectl get svc
    21  kubectl get no
    22  kubectl get po
-   23  kubectl get po -o wide(to check where )
+   23  kubectl get po -o wide(list Pods with additional details node name and pod IP)
    24  history
    ======================================================
    *DATE: 12/02/2026 Thursday (Kubernetes)
