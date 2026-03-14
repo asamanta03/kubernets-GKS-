@@ -4,8 +4,8 @@ gcloud beta container --project "sturdy-yen-483317-v6" clusters create "new" --r
 
 gcloud container clusters get-credentials new --region asia-east1 --project sturdy-yen-483317-v6
 
-kubectl cluster-info
-kubectl config get-contexts
+kubectl cluster-info (to check cluster information)
+kubectl config get-contexts (to check config context)
 kubectl get ns (to check name space)
 kubectl create ns jio-dev (to create name space)
 kubens ---> to check namespace
