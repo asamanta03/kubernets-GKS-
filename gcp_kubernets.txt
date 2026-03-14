@@ -78,7 +78,7 @@ Written 97.4% in Go language
 Available across cloud providers: AWS (EKS), Azure (AKS), Google Cloud (GKE)
 Architecture Components:
 Master Node: API Server, ETCD (key-value database storing cluster state), Scheduler (finds best node for workloads), Control Manager
-Worker Nodes: Kubelet (agent on every node), Container Runtime (Docker), Kube-proxy (handles networking)
+Worker Nodes: Kubelet (agent on every node), Container Runtime (Docker), Kube-proxy (handles networking), pod
 Communication flow: kubectl → API Server → ETCD → Scheduler → Control Manager
 Practical Implementation:
 Created a 3-node Kubernetes cluster in Google Cloud (Asia East region)
