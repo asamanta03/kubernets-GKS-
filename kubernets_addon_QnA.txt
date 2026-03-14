@@ -1,0 +1,285 @@
+1️⃣ Check Cluster Information
+kubectl cluster-info
+
+Shows the Kubernetes control plane and services.
+
+2️⃣ Check Nodes
+kubectl get nodes
+
+Lists worker nodes in the cluster.
+
+3️⃣ Get Pods
+kubectl get pods
+
+More detailed view:
+
+kubectl get pods -o wide
+4️⃣ Get Pods in All Namespaces
+kubectl get pods -A
+5️⃣ Describe Pod (Troubleshooting)
+kubectl describe pod <pod-name>
+
+Shows events, errors, container status.
+
+6️⃣ View Pod Logs
+kubectl logs <pod-name>
+
+For multi-container pods:
+
+kubectl logs <pod-name> -c <container-name>
+7️⃣ Execute Command Inside Pod
+kubectl exec -it <pod-name> -- /bin/bash
+
+Very common for debugging containers.
+
+8️⃣ Create Resource from YAML
+kubectl apply -f deployment.yaml
+
+Best practice for CI/CD pipelines.
+
+9️⃣ Delete Resource
+kubectl delete -f deployment.yaml
+
+Or
+
+kubectl delete pod <pod-name>
+🔟 Create Pod Quickly
+kubectl run nginx --image=nginx
+
+Example using Nginx container.
+
+⚙️ Deployment Commands
+1️⃣1️⃣ Check Deployments
+kubectl get deployments
+1️⃣2️⃣ Scale Deployment
+kubectl scale deployment nginx --replicas=5
+1️⃣3️⃣ Rolling Update
+kubectl set image deployment/nginx nginx=nginx:1.21
+1️⃣4️⃣ Check Rollout Status
+kubectl rollout status deployment/nginx
+1️⃣5️⃣ Rollback Deployment
+kubectl rollout undo deployment/nginx
+🌐 Service Commands
+1️⃣6️⃣ Get Services
+kubectl get svc
+1️⃣7️⃣ Expose Deployment
+kubectl expose deployment nginx --type=NodePort --port=80
+📦 Namespace Commands
+1️⃣8️⃣ Create Namespace
+kubectl create namespace dev
+1️⃣9️⃣ Get Namespaces
+kubectl get ns
+📊 Monitoring Commands
+2️⃣0️⃣ Watch Resources in Real Time
+kubectl get pods -w
+🔥 Bonus Commands (Very Useful)
+Check Events
+kubectl get events
+Resource Usage (Metrics Server Required)
+kubectl top pods
+kubectl top nodes
+💡 Interview Pro Tip
+
+Many DevOps interviews ask troubleshooting flow like:
+
+1️⃣ kubectl get pods
+2️⃣ kubectl describe pod
+3️⃣ kubectl logs
+4️⃣ kubectl exec
+
+This shows real production debugging knowledge.
+===================================================================================
+🔧 10 Kubernetes Troubleshooting Scenarios (DevOps Interviews)
+1️⃣ Pod is in CrashLoopBackOff
+Check pods
+kubectl get pods
+
+Example output
+
+nginx-6f9d8d7d9 CrashLoopBackOff
+Investigate
+kubectl describe pod nginx-6f9d8d7d9
+kubectl logs nginx-6f9d8d7d9
+Possible causes
+
+Application crash
+
+Wrong environment variables
+
+ConfigMap/Secret missing
+
+2️⃣ Pod stuck in Pending
+Check pod details
+kubectl describe pod <pod-name>
+
+Look for:
+
+0/3 nodes available
+Insufficient CPU
+Check nodes
+kubectl get nodes
+kubectl describe node <node-name>
+
+Possible reasons:
+
+Resource limits exceeded
+
+Node taints
+
+No available nodes
+
+3️⃣ Pod cannot pull Docker image
+
+Error:
+
+ImagePullBackOff
+
+Check logs:
+
+kubectl describe pod <pod-name>
+
+Common issues:
+
+Wrong image name
+
+Private registry authentication
+
+Image not available
+
+Example working image:
+
+kubectl run nginx --image=nginx
+
+Using Nginx container.
+
+4️⃣ Service not accessible
+Check service
+kubectl get svc
+Check endpoints
+kubectl get endpoints
+
+If empty:
+
+<none>
+
+Problem:
+Service selector does not match pod labels.
+
+Check labels:
+
+kubectl get pods --show-labels
+5️⃣ Cannot access application externally
+Check service type
+kubectl get svc
+
+Possible output:
+
+ClusterIP
+
+ClusterIP is internal only.
+
+Fix:
+
+kubectl expose deployment nginx --type=NodePort --port=80
+6️⃣ Deployment not creating pods
+
+Check deployment:
+
+kubectl get deployments
+
+Describe deployment:
+
+kubectl describe deployment nginx
+
+Look for errors like:
+
+ReplicaFailure
+7️⃣ Node is NotReady
+
+Check nodes:
+
+kubectl get nodes
+
+Example:
+
+node1 NotReady
+
+Check node details:
+
+kubectl describe node node1
+
+Common causes:
+
+kubelet stopped
+
+network issue
+
+disk pressure
+
+8️⃣ ConfigMap not applied to pod
+
+Check ConfigMap:
+
+kubectl get configmap
+
+Describe pod:
+
+kubectl describe pod <pod-name>
+
+Check volume mounts and environment variables.
+
+9️⃣ Container restarting frequently
+
+Check restart count:
+
+kubectl get pods
+
+Example:
+
+RESTARTS: 12
+
+Investigate:
+
+kubectl logs <pod-name>
+kubectl describe pod <pod-name>
+🔟 Pod cannot communicate with another service
+
+Test connectivity:
+
+kubectl exec -it <pod-name> -- /bin/bash
+
+Then inside container:
+
+curl service-name
+
+Check DNS:
+
+nslookup service-name
+🚀 Real DevOps Troubleshooting Flow
+
+In production engineers follow this order:
+
+kubectl get pods
+kubectl describe pod
+kubectl logs
+kubectl get svc
+kubectl get endpoints
+kubectl exec
+kubectl get events
+⭐ Interview Tip (Very Important)
+
+When interviewer asks:
+
+“Application is not accessible in Kubernetes, how will you troubleshoot?”
+
+Answer structure:
+
+1️⃣ Check pods
+2️⃣ Check logs
+3️⃣ Check service
+4️⃣ Check endpoints
+5️⃣ Check ingress / nodeport
+6️⃣ Check network policy
+
+This shows real production experience.
+=====================================
