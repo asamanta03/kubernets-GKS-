@@ -111,7 +111,8 @@ Key Command: kubectl get pods -o wide (shows node per pod).
 
 Kubernetes Interview Questions & Answers
 1. What is Kubernetes and why is it used?
-Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It's used to manage containers at scale, ensure high availability, and simplify application deployment across different environments.
+Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications.
+It's used to manage containers at scale, ensure high availability, and simplify application deployment across different environments.
 2. Explain the difference between Master Node and Worker Node.
 Master Node: Controls the cluster, runs API Server, ETCD, Scheduler, and Control Manager. Makes decisions about the cluster.
 Worker Node: Runs the actual applications, contains Kubelet, Container Runtime, and Kube-proxy.
