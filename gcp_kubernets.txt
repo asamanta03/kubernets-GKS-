@@ -219,6 +219,7 @@ Based on the meeting transcript, here are some scenario-based questions and answ
 Scenario 1: Connecting to Kubernetes Cluster
 Q: How do you connect to a Kubernetes cluster in your company?
 A: Using kubeconfig file. You can get credentials using the gcloud command or through tools like Rancher. The command is: gcloud container clusters get-credentials --project=
+***In our organization, we connect to the Kubernetes cluster using the kubeconfig file and kubectl CLI. The kubeconfig contains cluster endpoint and authentication details. After configuring it in ~/.kube/config, we verify access using commands like kubectl get nodes or kubectl get pods
 
 Scenario 2: Multiple Environments with Limited Budget
 Q: How do you manage dev, staging, and production environments when you don't have budget for separate clusters?
