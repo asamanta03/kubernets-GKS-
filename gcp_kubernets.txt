@@ -339,7 +339,7 @@ Homework Assigned:
 Find command to set default namespace permanently:
 kubectl config set-context --current --namespace=<namespace-name>
 kubectl config get-contexts
-kubectl det po
+kubectl describe po pod_name
 Compare top 10 AWS services with Google Cloud equivalents
 Prepare for Monday's session on Netflix case study and e-commerce microservices project
 Upcoming Topics:
