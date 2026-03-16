@@ -1,0 +1,140 @@
+Project: Kubernetes-based Microservices Deployment for an E-commerce Application
+
+Answer:
+In my recent project, we migrated a traditional 3-tier monolithic application into a microservices architecture and deployed it using Kubernetes.
+The application consisted of multiple services like frontend, cart, product, and payment services. Each service was containerized using Docker and deployed as independent microservices.
+My main responsibility was to create and manage Kubernetes clusters, deploy applications using YAML manifests and kubectl, and ensure high availability by running multiple replicas for critical services like payment and frontend.
+I also managed source code using Git, where different development teams worked on separate microservices.
+For monitoring, we implemented Prometheus and Grafana to track application health and cluster performance.
+Additionally, I handled troubleshooting tasks like checking pod logs, resolving deployment issues, and redeploying services when required. We were also planning to automate deployments using Jenkins to implement CI/CD pipelines.
+Overall, this architecture improved application scalability, reduced downtime, and made deployments easier compared to the earlier monolithic setup.
+Why This Answer Works
+It clearly shows:
+Architecture knowledge
+DevOps tools experience
+Real responsibilities
+Operational experience
+Interviewers look for hands-on Kubernetes experience, which your answer highlights.
+Pro Interview Tip (Very Important)
+Always end your answer with impact:
+Example:
+This setup helped us scale services easily and improved system reliability because Kubernetes automatically restarted failed containers and supported rolling deployments.
+===========================
+1️⃣ How did you deploy applications in Kubernetes?
+Answer:
+We deployed applications using YAML manifest files in Kubernetes. The YAML files defined resources like Deployments, Services, ConfigMaps, and Secrets. We used kubectl to apply them to the cluster.
+Example:
+kubectl apply -f deployment.yaml
+2️⃣ How did you scale your application?
+Answer:
+We scaled applications by increasing the number of replicas in the Deployment. Critical services like payment and frontend ran with 3–5 replicas to ensure high availability.
+Example:
+kubectl scale deployment payment-service --replicas=5
+In production we can also use Kubernetes Horizontal Pod Autoscaler for automatic scaling.
+3️⃣ How did you monitor your Kubernetes cluster?
+Answer:
+We implemented monitoring using Prometheus for collecting metrics and Grafana for dashboards.
+This helped us monitor CPU usage, memory usage, pod health, and application metrics.
+4️⃣ How did you troubleshoot Kubernetes issues?
+Answer:
+The typical troubleshooting process involved:
+Check pod status
+Describe the pod
+Check logs
+Example commands:
+kubectl get pods
+kubectl describe pod pod-name
+kubectl logs pod-name
+This helps identify issues like CrashLoopBackOff, image pull errors, or configuration problems.
+5️⃣ How did you manage application configuration?
+Answer:
+We managed application configuration using ConfigMaps and Secrets in Kubernetes.
+ConfigMaps stored environment configuration, while Secrets stored sensitive data such as database credentials and API keys.
+6️⃣ How did you handle application updates?
+Answer:
+We used Rolling Updates in Kubernetes Deployments. This allows updating the application version without downtime.
+Example:
+kubectl set image deployment/nginx nginx=nginx:1.20
+Kubernetes gradually replaces old pods with new ones.
+7️⃣ How did you manage source code and CI/CD?
+Answer:
+We managed code using Git, where each microservice had its own repository or folder.
+We were planning to implement CI/CD pipelines using Jenkins to automate build, Docker image creation, and Kubernetes deployment.
+==========================================================================================
+1️⃣ Pod is stuck in CrashLoopBackOff
+Question: How do you troubleshoot?
+Answer:
+kubectl get pods
+kubectl describe pod <pod-name>
+kubectl logs <pod-name>
+Check:
+Application errors
+Incorrect environment variables
+Missing configuration
+Resource limits
+2️⃣ Pod is in ImagePullBackOff
+Question: What could be the issue?
+Possible reasons:
+Incorrect image name
+Image not available in registry
+Authentication issue
+Check:
+kubectl describe pod <pod-name>
+3️⃣ Application is not accessible from outside the cluster
+Question: What will you check?
+Steps:
+Check service
+kubectl get svc
+Verify service type
+Check endpoints
+kubectl get endpoints
+Check pod status
+4️⃣ Pod is running but application is not working
+Answer:
+Check logs:
+kubectl logs <pod-name>
+Access the container:
+kubectl exec -it <pod-name> -- /bin/sh
+Verify:
+Configurations
+Application ports
+Dependencies
+5️⃣ Node becomes NotReady
+Question: What will you do?
+Check node status:
+kubectl get nodes
+kubectl describe node <node-name>
+Possible causes:
+kubelet stopped
+resource exhaustion
+network issues
+6️⃣ Need to scale application during high traffic
+Answer:
+Manual scaling:
+kubectl scale deployment nginx --replicas=5
+Auto scaling using:
+Kubernetes Horizontal Pod Autoscaler
+Example:
+kubectl autoscale deployment nginx --cpu-percent=50 --min=2 --max=10
+7️⃣ Need zero downtime deployment
+Answer:
+Use Rolling Updates in Kubernetes deployment.
+Example:
+kubectl set image deployment/nginx nginx=nginx:1.21
+Kubernetes replaces pods gradually.
+8️⃣ How do you check cluster resources?
+Commands:
+kubectl top nodes
+kubectl top pods
+This requires metrics-server.
+9️⃣ How do you rollback a failed deployment?
+Check rollout history:
+kubectl rollout history deployment nginx
+Rollback:
+kubectl rollout undo deployment nginx
+🔟 How do you debug networking between pods?
+Steps:
+Check service
+Check endpoints
+Test connectivity
+kubectl exec -it <pod-name> -- curl service-name
