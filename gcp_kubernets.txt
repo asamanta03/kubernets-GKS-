@@ -447,7 +447,7 @@ A: Use the command with --namespace flag, for example: kubectl run nginx1 --imag
 
 day 3: 16/2/2026
 
-https://github.com/GoogleCloudPlatform/microservices-demo.git 
+git clone https://github.com/GoogleCloudPlatform/microservices-demo.git 
   505  ls
   506  cd microservices-demo/
   507  ls
