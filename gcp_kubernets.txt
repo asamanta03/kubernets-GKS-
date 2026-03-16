@@ -360,6 +360,8 @@ kubectl get svc -n atanu(namespace_name) to check service in perticuler namespac
 Scenario 2: Running container needs modification
 Question: How to add replicas to a running container/pod?
 Answer: You cannot directly add replicas to a pod. Pods are single entity units without automation. You need to create a deployment instead, which manages replicas automatically.
+kubectl scale deployment nginx --replicas=3 -n atanu
+This increases the number of pods to 3
 
 Scenario 3: Pod deletion and auto-healing
 Question: What happens when you delete a pod that's part of a deployment?
