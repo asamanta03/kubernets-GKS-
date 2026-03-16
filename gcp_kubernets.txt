@@ -121,7 +121,7 @@ A Pod is the smallest deployable unit in Kubernetes. It contains one or more con
 4. What is the purpose of Namespaces?
 Namespaces provide logical separation within a single cluster, allowing you to divide cluster resources between multiple users or environments (like dev, QA, prod) without needing separate physical clusters.
 5. What is ETCD?
-ETCD is a distributed key-value database that stores the entire cluster state and configuration data. It's the source of truth for the Kubernetes cluster.
+etcd is a distributed key-value store used by Kubernetes to store all cluster state and configuration data such as pods, services, secrets, and nodes.
 6. How do you expose a Pod to external traffic?
 “We expose a Pod externally by creating a Service of type NodePort or LoadBalancer. In production, we typically use Ingress with a LoadBalancer for better traffic management.”
 kubectl expose pod nginx-pod --type=LoadBalancer --port=80
