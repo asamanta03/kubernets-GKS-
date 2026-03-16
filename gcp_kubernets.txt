@@ -389,7 +389,7 @@ maxSurge: 1 → Create one extra pod during update
 
 Scenario 6: Setting default namespace
 Question: How to set a namespace as default to avoid specifying it every time?
-Answer: This was given as homework to find the command for setting default namespace in the config file.
+Answer: kubectl config set-context --current --namespace=<namespace-name>
 ====================================================
 Based on the meeting transcript, several interview questions and answers were discussed:
 
