@@ -591,6 +591,13 @@ kubuctl get secret
 kubuctl get secret \
 kubuctl get secrets
   350  kubectl create secret generic db-secret   --from-literal=DB_USER=admin   --from-literal=DB_PASSWORD=Admin@123
+What This Does
+Creates a Secret named db-secret
+Stores:
+DB_USER=admin
+DB_PASSWORD=Admin@123
+Type = Opaque (default)
+Uses kubectl to securely store sensitive data.
   351  kubectl get secrets
   352  kubectl describe secret db-secret
   353  kubectl get configmaps
