@@ -953,6 +953,16 @@ Answer: Server monitoring (software installed), Infrastructure monitoring (CPU, 
 Answer: Two methods - using Dashboard ID (copy ID and import via Load button) or downloading JSON file and uploading/pasting it in Grafana import section.
 8. What is the Explore option in Grafana?
 Answer: It allows direct connection to the database (Prometheus) to search and query metrics. All available metrics can be explore
+=========================================================================================
+Real Troubleshooting Flow (Production)
+kubectl get pods → identify issue
+kubectl describe pod → check events
+kubectl logs → check app error
+kubectl exec → deep debugging
+kubectl get svc & endpoints → check connectivity
+kubectl get events → find root cause
+⭐ Interview Answer (Perfect)
+To troubleshoot Kubernetes issues, I use commands like kubectl get pods, describe, and logs to identify issues. I check events for root cause, use exec for debugging inside containers, and verify services and endpoints for connectivity issues.
 
 
 
