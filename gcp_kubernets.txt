@@ -647,6 +647,9 @@ Demonstrated automatic pod scaling when load increased
 Key Takeaways: Students were encouraged to practice hands-on, prepare for interviews,
 ========================================================================
 Based on the meeting transcript, here are scenario-based interview questions and answers discussed:
+Difference between ConfigMap and Secret?
+Answer:
+ConfigMap stores normal configuration data, while Secrets store sensitive data and are base64 encoded.
 
 Scenario 1: Resource Quota Issues
 Q: Your application is working in dev environment but failing in production. What could be the issue?
