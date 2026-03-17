@@ -599,7 +599,7 @@ DB_PASSWORD=Admin@123
 Type = Opaque (default)
 Uses kubectl to securely store sensitive data.
   351  kubectl get secrets
-  352  kubectl describe secret db-secret
+  352  kubectl describe secret db-secret (display detailed information about the db-secret)
   353  kubectl get configmaps
   354  kubectl create configmap app-config   --from-literal=APP_ENV=production   --from-literal=APP_PORT=8080
   355  kubectl get configmaps
