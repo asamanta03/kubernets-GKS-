@@ -602,8 +602,13 @@ Uses kubectl to securely store sensitive data.
   352  kubectl describe secret db-secret (display detailed information about the db-secret)
   353  kubectl get configmaps
   354  kubectl create configmap app-config   --from-literal=APP_ENV=production   --from-literal=APP_PORT=8080
-  355  kubectl get configmaps
-  356  kubectl get hpa
+  355  kubectl get configmaps (to list all ConfigMaps in the current namespace)
+What is a ConfigMap?
+In Kubernetes, a ConfigMap is used to store:
+Environment variables
+Application configuration
+Non-sensitive data
+  356  kubectl get hpa (to list all Horizontal Pod Autoscalers (HPA) in the current namespace.)
   357  mkdir batch42
   358  cd batch42
   359  touch nginx-deployment.yaml
@@ -613,10 +618,12 @@ Uses kubectl to securely store sensitive data.
   363  kubectl expose deployment nginx-deployment --type=LoadBalancer --port=80 --name=nginx-service
   364  kubectl get svc
   365  kubectl get apiservices | grep metrics
+We use Horizontal Pod Autoscaler in Kubernetes to automatically scale pods based on CPU utilization. It helps handle traffic spikes and ensures optimal resource usage.
   366  kubectl autoscale deployment nginx-deployment --cpu-percent=2 --min=2 --max=5
   367  kubectl get hpa
   368  gcloud auth login
   369  kubectl run -it --rm --image=busybox load-generator -- /bin/sh
+If HPA is not scaling, I first check kubectl get hpa for metrics. If it shows unknown values, I verify the Metrics Server. Then I check if CPU requests are defined in the deployment, because HPA depends on that. Finally, I generate load and check events to confirm scaling behavior.
 
 ===============================================================================
 Based on today's class, here is a summary:
@@ -654,10 +661,9 @@ Demonstrated automatic pod scaling when load increased
 Key Takeaways: Students were encouraged to practice hands-on, prepare for interviews,
 ========================================================================
 Based on the meeting transcript, here are scenario-based interview questions and answers discussed:
-Difference between ConfigMap and Secret?
+Q: Difference between ConfigMap and Secret?
 Answer:
-ConfigMap stores normal configuration data, while Secrets store sensitive data and are base64 encoded.
-
+ConfigMap stores non-sensitive configuration data, while Secrets store sensitive data like passwords and API keys.
 Scenario 1: Resource Quota Issues
 Q: Your application is working in dev environment but failing in production. What could be the issue?
 A: The production cluster size might be smaller than dev environment. We faced this when deployment worked in dev but not in production because production infrastructure was sized differently by the client. Solution is to use Terraform to create consistent infrastructure across environments to avoid such issues.
