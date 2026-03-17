@@ -926,6 +926,7 @@ Based on the meeting transcript, here are some scenario-based interview question
 Q1: What is your role in setting up monitoring infrastructure?
 A: As a DevOps engineer, our main job role is to provide the infrastructure. We set up Prometheus and Grafana monitoring stack, configure it, and hand it over to the L1/L2/NOC monitoring team who will handle day-to-day alerts and monitoring activities.
 Q2: How do you customize Helm charts for your requirements?
+We customize Helm charts primarily using values.yaml files where we override parameters like replica count, image version, and service type. For environment-specific deployments, we maintain separate values files such as dev, QA, and prod. For advanced customization, we modify Helm templates to meet specific application requirements.
 A: We use the values.yaml file in Helm charts to customize the installation. For example, if the default chart has version 1 but we need version 1.5, we modify the version in values.yaml. We can also comment out unnecessary components that we don't want to install.
 Q3: If Prometheus data is not coming for a particular node, how would you troubleshoot?
 A: First, check if the node exporter pod is running on that specific node. Since we have one node exporter per node (e.g., 3 nodes = 3 node exporters), if data is missing from one node, the corresponding node exporter pod might not be running properly.
