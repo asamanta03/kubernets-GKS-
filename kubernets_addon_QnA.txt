@@ -282,4 +282,25 @@ Answer structure:
 6️⃣ Check network policy
 
 This shows real production experience.
-=====================================
+=================================================
+☸️ Kubernetes Advanced Scenario Questions
+
+1️⃣ A pod is in CrashLoopBackOff state. How will you troubleshoot step by step?
+
+2️⃣ Your application is not accessible via Ingress. What could be the issue?
+
+3️⃣ Pods are not getting scheduled on nodes. What will you check?
+
+4️⃣ One node in the cluster is NotReady. How do you investigate and fix it?
+
+5️⃣ Your deployment is not updating properly (rolling update stuck). What could be wrong?
+
+6️⃣ Application inside pod is slow despite sufficient resources. Where will you debug?
+
+7️⃣ You need to scale applications automatically. How does HPA work internally?
+
+8️⃣ Config changes are made, but pods are not picking up updates. Why?
+
+9️⃣ Your cluster is facing high resource utilization. How will you optimize it?
+
+🔟 You need to secure your Kubernetes cluster. What best practices will you follow?
