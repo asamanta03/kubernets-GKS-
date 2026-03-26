@@ -304,3 +304,232 @@ This shows real production experience.
 9️⃣ Your cluster is facing high resource utilization. How will you optimize it?
 
 🔟 You need to secure your Kubernetes cluster. What best practices will you follow?
+=================================================================
+⚙️ Ansible Interview Questions
+
+1️⃣ What is Ansible and how is it different from tools like Puppet or Chef?
+
+2️⃣ What are the main components of Ansible (Inventory, Playbook, Modules)?
+
+3️⃣ What is an Ansible Playbook and how is it structured?
+
+4️⃣ What are Ansible roles and why are they important?
+
+5️⃣ What is the difference between ad-hoc commands and playbooks?
+
+6️⃣ How does Ansible communicate with remote systems?
+
+7️⃣ What are Ansible variables and how do you manage them?
+
+8️⃣ What is idempotency in Ansible?
+
+9️⃣ How do you secure sensitive data in Ansible (Ansible Vault)?
+
+🔟 How would you integrate Ansible with a CI/CD pipeline?
+==========================================================
+🔹 Jenkins & CI/CD 
+1. How do you host Jenkins? 
+2. What are environment variables? 
+3. What are parameters in Jenkins and where do you use them? 
+4. What is a multibranch pipeline and how do you use it? 
+5. What is a cron job and how do you create it? 
+6. If a cron job already exists, would you modify it or create a new one? Why? 
+7. Why do we use webhook triggers? 
+8. Which type of pipeline have you used in Jenkins? 
+9. How do you declare variables (e.g., a=1,2,4 and b=2,4) in a Jenkins pipeline? 
+10. How do you use credentials in Jenkins? Where do you store them? 
+
+---
+
+🔹 Git & Collaboration 
+11. How can you restrict users in GitHub? 
+12. Why do we use Pull Requests (PRs) in Git? 
+
+---
+
+🔹 Kubernetes & AWS (EKS) 
+13. What is a namespace and how is it used? 
+14. In a Pod, how many containers can you run? Why use multiple containers? 
+15. How do you manage an EKS cluster? 
+
+---
+
+🔹 Terraform 
+16. What are local variables in Terraform? 
+17. What are modules in Terraform? Do you use default modules or custom ones? 
+
+---
+
+🔹 Python & Automation 
+18. Apart from disk usage, what other automation tasks have you done using Python? 
+19. Have you worked with requests in Python scripts? 
+
+---
+
+🔹 Docker 
+20. What is ENTRYPOINT vs CMD? 
+21. What is the RUN command in Docker? 
+
+---
+
+🔹 General / Real-World Experience 
+22. What are your day-to-day responsibilities as a DevOps Engineer? 
+23. Which tools do you primarily use in your current role? 
+=============================================================================
+• “Website is down but pods are running — what will you check?”
+• “Deployment succeeded but users see errors — why?”
+• “CPU is fine but latency is high — what next?
+=============================================================================
+☁️ AWS Scenario-Based Interview Questions
+
+1️⃣ Your application is down behind an Application Load Balancer. How will you troubleshoot?
+
+2️⃣ EC2 instances are running but not reachable. What could be the possible issues?
+
+3️⃣ Your Auto Scaling Group is not launching new instances under load. What will you check?
+
+4️⃣ S3 bucket data is accidentally deleted. How can you recover it?
+
+5️⃣ Your application is facing high latency in production. How would you investigate?
+
+6️⃣ You need to secure sensitive data (passwords, API keys) in AWS. What services will you use?
+
+7️⃣ Your CI/CD pipeline needs to deploy applications to AWS automatically. How will you design it?
+
+8️⃣ A Lambda function is failing intermittently. How will you debug it?
+
+9️⃣ You need to design a highly available and fault-tolerant architecture. What components will you use?
+
+🔟 Cloud costs are unexpectedly high. How will you analyze and optimize them?
+=================================================================
+💡 Interview Questions Asked:
+
+🔹 Kubernetes Networking
+1️⃣ How do you configure networking in Kubernetes? 
+2️⃣ What is CNI (Container Network Interface)? 
+
+---
+
+🌐 Service Exposure
+3️⃣ How do you expose services in Kubernetes? 
+
+---
+
+⚙️ Cluster Management
+4️⃣ What is the procedure for Kubernetes cluster upgrade? 
+
+---
+
+☁️ Cloud + Managed Kubernetes
+5️⃣ What is the latest version of EKS? 
+
+---
+
+📈 Autoscaling Concepts
+6️⃣ What is HPA (Horizontal Pod Autoscaler)? 
+7️⃣ How does HPA work internally? 
+=======================================================
+💡 Interview Questions Asked:
+
+🔹 Basics & Experience
+1️⃣ Introduce yourself 
+2️⃣ What are your day-to-day responsibilities? 
+3️⃣ Have you deployed Kubernetes on-premises? Which setup? 
+4️⃣ What was your cluster size (nodes, workloads)? 
+5️⃣ Have you created a cluster from scratch? 
+
+---
+
+⚙️ Cluster Setup & Architecture
+6️⃣ Steps to create a Kubernetes cluster 
+7️⃣ Auto-created vs manually created components 
+8️⃣ Kubernetes Control Plane components 
+9️⃣ API Server default port & role 
+🔟 Role of kube-proxy 
+
+1️⃣1️⃣ Can kubelet run on control plane? 
+1️⃣2️⃣ Function of kubelet 
+1️⃣3️⃣ What is a container runtime? 
+1️⃣4️⃣ Other container runtimes you know 
+
+---
+
+🌐 Networking & CNI
+1️⃣5️⃣ What is Calico? Why is it used? 
+1️⃣6️⃣ Pod-to-pod communication inside cluster 
+1️⃣7️⃣ How to expose apps outside cluster? 
+1️⃣8️⃣ NodePort vs ClusterIP 
+1️⃣9️⃣ Purpose of Ingress 
+
+---
+
+📦 Workloads & Scheduling
+2️⃣0️⃣ ReplicaSet vs Deployment 
+2️⃣1️⃣ DaemonSet use cases 
+2️⃣2️⃣ StatefulSet vs Deployment 
+2️⃣3️⃣ Pod Affinity & use cases 
+2️⃣4️⃣ Taints & Tolerations 
+
+2️⃣5️⃣ Labels & Selectors vs Taints & Tolerations 
+2️⃣6️⃣ Can selectors work with tolerations? 
+
+---
+
+📈 Scaling & Autoscaling
+2️⃣7️⃣ Node scaling process 
+2️⃣8️⃣ Prerequisites for scaling 
+2️⃣9️⃣ Cluster Autoscaler working 
+3️⃣0️⃣ Other dependencies in Autoscaling 
+
+---
+
+🚨 Troubleshooting & Real Scenarios
+3️⃣1️⃣ What is ImagePullBackOff error? 
+3️⃣2️⃣ How to check pod events? 
+=============================================================================
+🔧 Git & Version Control Interview Questions
+
+1️⃣ What is Git and how is it different from centralized version control systems?
+
+2️⃣ What is the difference between git pull and git fetch?
+
+3️⃣ What is the difference between merge and rebase?
+
+4️⃣ What is a branching strategy? (e.g., Git Flow, feature branching)
+
+5️⃣ How do you resolve merge conflicts in Git?
+
+6️⃣ What is the difference between git stash and git commit?
+
+7️⃣ What is a detached HEAD state in Git?
+
+8️⃣ How do you revert a commit vs reset a commit?
+
+9️⃣ What are hooks in Git?
+
+🔟 How does Git integrate with CI/CD pipelines?
+
+⸻=====================================================================
+📍 Company: Deloitte 
+📍 Role: Automation Engineer 
+📍 Location: Hyderabad 
+
+---
+
+💡 Interview Questions Asked:
+
+1️⃣ Introduce yourself and explain your project. 
+2️⃣ What was the toughest task in your project? What challenges/errors did you face? 
+3️⃣ How did you implement automation? Explain step-by-step. 
+4️⃣ How did you use Ansible? What tasks did you automate? 
+5️⃣ Which methodology did your team follow? 
+6️⃣ Difference between Agile and Kanban? 
+7️⃣ Terraform vs CloudFormation? 
+8️⃣ Scenario-Based Question: 
+👉 Alerts from Dynatrace → Create incident in ServiceNow → Assign to teams 
+✔️ How would you automate this workflow?
+
+9️⃣ Last-minute client changes before production — how do you handle it? Also explain your deployment process. 
+🔟 Why did you switch from Electrical Engineering to IT? What motivated you towards Cloud & DevOps?
+========================================================
+
