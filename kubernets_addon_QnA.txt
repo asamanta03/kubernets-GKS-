@@ -532,4 +532,254 @@ This shows real production experience.
 9️⃣ Last-minute client changes before production — how do you handle it? Also explain your deployment process. 
 🔟 Why did you switch from Electrical Engineering to IT? What motivated you towards Cloud & DevOps?
 ========================================================
+🌐 Networking Interview Questions
+
+1️⃣ What is the difference between TCP and UDP?
+
+2️⃣ What is a VPC (Virtual Private Cloud) and why is it important in cloud environments?
+
+3️⃣ What is the difference between public subnet and private subnet?
+
+4️⃣ How does a Load Balancer work?
+
+5️⃣ What is DNS and how does domain resolution happen?
+
+6️⃣ What is the difference between HTTP and HTTPS?
+
+7️⃣ What are ports and protocols? Give some commonly used port numbers.
+
+8️⃣ What is a NAT Gateway and when do you use it?
+
+9️⃣ How do you troubleshoot network connectivity issues between two servers?
+
+🔟 What is the difference between Security Groups and Firewalls?
+============================================================
+🚀 HCL DevOps Interview Experience – 1st Round (Q&A Dump)
+
+One colleague Recently appeared for a DevOps Engineer interview at HCL, and here are the questions asked in the 1st round. 
+Sharing this to help fellow aspirants prepare better 💡
+
+⸻
+
+🐳 Docker
+ 1. Main Docker Network Types
+ 2. What is the use of Dockerfile?
+ 3. Why do we use Dockerfile?
+ 4. Dockerfile Instructions
+
+⸻
+
+⚙️ Terraform
+ 5. How do you execute a script even if the resource is not created?
+ 6. What is Terraform State File? Why is it used?
+ 7. What are terraform block and required_providers?
+ 8. What is remote-exec in Terraform?
+ 9. What is null_resource in Terraform?
+
+⸻
+
+☸️ Kubernetes
+ 10. Worker Node keeps restarting – how to resolve?
+ 11. Which Kubernetes resource is used to store tokens, secrets, and passwords?
+ 12. Readiness Probe in Kubernetes?
+ 13. Liveness Probe vs Readiness Probe
+ 14. Storage resources in a Pod
+ 15. ReplicaSet manifest
+ 16. NodePort range
+ 17. ClusterIP vs NodePort
+ 18. Default namespaces in Kubernetes
+
+⸻
+
+🔐 Networking & Security
+ 19. On what basis do we use SSL termination?
+ 20. What is SSL termination?
+
+⸻
+
+☁️ AWS
+ 21. Difference between Application Load Balancer and Network Load Balancer
+ 22. What is Amazon Route 53?
+ 23. Is Elastic IP single per AWS account?
+ 24. What are Security Groups?
+ 25. What is NACL?
+ 26. What is User Data in EC2?
+====================================================
+🚀 Senior DevOps Engineer Interview Questions (Real-World Scenarios)
+Capgemini 
+
+If you’re targeting Senior DevOps / SRE / Cloud roles, prepare these practical questions 👇
+
+⸻
+
+🔹 How do you write and structure a Jenkins Shared Library for reusable pipelines?
+
+🔹 After a SonarQube scan, how can you print the dashboard URL along with Quality Gate status inside the pipeline?
+
+🔹 Given a deployment.yml, how would you extract and print the Docker image being used?
+
+🔹 While building a Docker image for a Java app, what JAR file path do you typically use and why?
+
+🔹 What happens if the Kubernetes API Server goes down? Explain the impact on cluster operations.
+
+🔹 If the API Server is down, will application traffic stop or continue flowing? Why?
+
+🔹 How do you write a Docker multi-stage build, and what are its advantages?
+================================================================
+⚡ Real DevOps Scenario-Based Questions
+
+1️⃣ Your application is down in production. What steps will you take to troubleshoot and restore it?
+
+2️⃣ CI/CD pipeline is failing after deployment stage. How will you debug it?
+
+3️⃣ A Kubernetes pod is continuously crashing (CrashLoopBackOff). What will you check?
+
+4️⃣ Suddenly, CPU usage spikes to 100% in production servers. What’s your action plan?
+
+5️⃣ Your team pushed a buggy release to production. How will you handle rollback?
+
+6️⃣ Application is slow but servers are healthy. Where will you investigate?
+
+7️⃣ Monitoring alerts are not triggering. What could be the issue?
+
+8️⃣ A Terraform deployment partially failed. How will you fix the infrastructure?
+
+9️⃣ Logs are not visible in centralized logging (Splunk/ELK). What will you check?
+
+🔟 Database is slow under high traffic. How will you troubleshoot?
+===================================================================
+🐧 Linux Troubleshooting Interview Questions
+
+1️⃣ A server is running slow. How would you troubleshoot step by step?
+
+2️⃣ How do you check CPU, memory, and disk usage in Linux?
+
+3️⃣ A process is consuming high CPU. How will you identify and fix it?
+
+4️⃣ What will you do if disk space is full in production?
+
+5️⃣ How do you check logs for application failures in Linux?
+
+6️⃣ What is the difference between top, htop, and ps commands?
+
+7️⃣ How do you find which process is using a specific port?
+
+8️⃣ What will you do if a service is not starting?
+
+9️⃣ How do you debug network connectivity issues in Linux?
+
+🔟 How do you check and manage running services in Linux?
+====================================================================
+🐳 Docker Interview Questions
+
+1️⃣ What is Docker and how is it different from Virtual Machines?
+
+2️⃣ What is the difference between a Docker Image and a Docker Container?
+
+3️⃣ What is the purpose of a Dockerfile?
+
+4️⃣ Explain the Docker architecture (Client, Daemon, Registry).
+
+5️⃣ What are Docker volumes and why are they important?
+
+6️⃣ What is the difference between CMD and ENTRYPOINT in Dockerfile?
+
+7️⃣ How do you optimize the size of a Docker image?
+
+8️⃣ What are Docker networks and why are they used?
+
+9️⃣ What is the difference between Docker Compose and Docker Swarm?
+
+🔟 How do you push Docker images to a container registry like Docker Hub, AWS ECR, or GCP Artifact Registry?
+
+==============================================================================
+🏗 Terraform Interview Questions
+
+1️⃣ What is Infrastructure as Code (IaC) and why is Terraform widely used for it?
+
+2️⃣ What is the difference between Terraform and configuration management tools like Ansible?
+
+3️⃣ Explain the purpose of the Terraform state file.
+
+4️⃣ What is remote state in Terraform and why should we use it?
+
+5️⃣ What is the difference between terraform plan, apply, and destroy?
+
+6️⃣ What are Terraform modules and why are they important?
+
+7️⃣ How do you manage secrets securely in Terraform?
+
+8️⃣ What is the difference between count and for_each in Terraform?
+
+9️⃣ What are Terraform workspaces and when should they be used?
+
+🔟 How would you implement Terraform in a CI/CD pipeline for infrastructure deployment?
+
+====================================================================================
+☸️ Kubernetes Interview Questions
+
+1️⃣ What is the difference between Docker and Kubernetes?
+
+2️⃣ Explain the Kubernetes architecture (Master Node and Worker Node components).
+
+3️⃣ What is the difference between a Pod, Deployment, and ReplicaSet?
+
+4️⃣ How does Service discovery work in Kubernetes?
+
+5️⃣ What is the difference between ClusterIP, NodePort, and LoadBalancer services?
+
+6️⃣ What are ConfigMaps and Secrets and when do you use them?
+
+7️⃣ How do you debug a failing pod in Kubernetes?
+
+8️⃣ What is the difference between Horizontal Pod Autoscaler (HPA) and Vertical Pod Autoscaler (VPA)?
+
+9️⃣ What is the purpose of Ingress in Kubernetes?
+
+🔟 How do you perform rolling updates and rollbacks in Kubernetes deployments?
+=========================================================================================
+⚙️ CI/CD & Automation Interview Questions
+
+1️⃣ What are the different stages of a typical CI/CD pipeline? Explain each stage briefly.
+
+2️⃣ What is the difference between CI, Continuous Delivery, and Continuous Deployment?
+
+3️⃣ Why do organizations use GitLab CI or Jenkins instead of manual deployments?
+
+4️⃣ What is the role of artifact repositories like JFrog Artifactory or Nexus in CI/CD?
+
+5️⃣ How do you secure credentials (passwords, API keys) inside CI/CD pipelines?
+
+6️⃣ What is the difference between pipeline runners/agents and pipeline controllers?
+
+7️⃣ How do you rollback a failed deployment in a CI/CD pipeline?
+
+8️⃣ What are pipeline triggers and what types of triggers can be used?
+
+9️⃣ Explain the concept of pipeline as code.
+
+🔟 How do you optimize a slow CI/CD pipeline in a production environment?
+===================================================================================
+☁️ AWS + DevOps Interview Questions
+
+1️⃣ What is the difference between Security Groups and Network ACLs in AWS?
+
+2️⃣ How does Auto Scaling work with Application Load Balancer? Explain a real scenario.
+
+3️⃣ What are IAM Roles vs IAM Policies? When should you use each?
+
+4️⃣ Explain the difference between S3 Standard, S3 IA, and Glacier.
+
+5️⃣ How would you secure secrets in a CI/CD pipeline running on AWS?
+
+6️⃣ What is the difference between ECS and EKS?
+
+7️⃣ How do you deploy a Docker container to AWS using CI/CD?
+
+8️⃣ What are the steps to troubleshoot a failing EC2 instance in production?
+
+9️⃣ Explain how Terraform manages AWS infrastructure state.
+
+🔟 How would you design a highly available architecture on AWS for a web application?
+
 
