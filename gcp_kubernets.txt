@@ -940,7 +940,8 @@ Based on today's session, here are key interview questions and answers from a De
 1. What is the role of DevOps in monitoring setup?
 Answer: DevOps engineers are responsible for providing and setting up the monitoring infrastructure. The actual monitoring and alert handling is done by L1/L2/NOC teams. If L1/L2 teams cannot resolve issues, they escalate to L3 or DevOps team.
 2. What is Helm and how does it work?
-Answer: Helm is a package manager for Kubernetes. It uses charts (packages) to install applications. The workflow is: helm repo add (download code) → helm repo update (fetch latest changes) → helm install (install the application). Helm has a client and Tiller server (daemon) that reads the code and creates resources via Kubernetes API.
+Answer: Helm is a package manager for Kubernetes. It uses charts (packages) to install applications. 
+The workflow is: helm repo add (download code) → helm repo update (fetch latest changes) → helm install (install the application). Helm has a client and Tiller server (daemon) that reads the code and creates resources via Kubernetes API.
 3. How do you customize Helm installations?
 Answer: Through the values.yaml file. You can change versions, enable/disable components by commenting them out, and customize configurations as per requirements.
 4. What is a data source in Grafana?
